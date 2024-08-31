@@ -4,7 +4,7 @@
 <meta name="description" content="{{$setting->meta_description}}">
 @endsection
 @section('title')
-    {{__('B2b')}}
+    {{__('Vault')}}
 @endsection
 
 @section('content')
