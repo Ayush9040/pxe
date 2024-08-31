@@ -9,22 +9,22 @@
                         @if($track_orders[$i]['title'] == 'Pending')
                             <li class="active">
                                 <div class="icon"><i class="fas fa-arrow-alt-circle-right"></i></div>
-                                <div class="progress-title">{{ __('Pending') }}</div>
-                                <div class="progress-title">{{ date('l, d M, Y',strtotime($track_orders[$i]['created_at'])) }}</div>
-                                <div class="progress-title">{{ __('Product Pending For Approval') }}</div>
+                                <div class="progress-title  uppercase">{{ __('Pending') }}</div>
+                                <div class="progress-title uppercase">{{ date('l, d M, Y',strtotime($track_orders[$i]['created_at'])) }}</div>
+                                <div class="progress-title uppercase">{{ __('Product Pending For Approval') }}</div>
                             </li>
                         @else
                         <li>
                             <div class="icon"><i class="fas fa-arrow-alt-circle-right"></i></div>
-                            <div class="progress-title">{{ __('Pending') }}</div>
-                            <div class="progress-title">{{ __('Soon') }}</div>
+                            <div class="progress-title uppercase">{{ __('Pending') }}</div>
+                            <div class="progress-title uppercase">{{ __('Soon') }}</div>
                         </li>
                         @endif
                     @else
                     <li>
                         <div class="icon"><i class="fas fa-arrow-alt-circle-right"></i></div>
-                        <div class="progress-title">{{ __('Pending') }}</div>
-                        <div class="progress-title">{{ __('Soon') }}</div>
+                        <div class="progress-title uppercase">{{ __('Pending') }}</div>
+                        <div class="progress-title uppercase">{{ __('Soon') }}</div>
                     </li>
                     @endif
                 @endif
@@ -36,22 +36,22 @@
                         @if($track_orders[$i]['title'] == 'In Progress')
                         <li class="active">
                             <div class="icon"><i class="fas fa-arrow-alt-circle-right"></i></div>
-                            <div class="progress-title">{{ __('Processing') }}</div>
-                            <div class="progress-title">{{ date('l, d M, Y',strtotime($track_orders[$i]['created_at'])) }}</div>
-                            <div class="progress-title">{{ __('Product Shift For Delevery') }}</div>
+                            <div class="progress-title uppercase">{{ __('Processing') }}</div>
+                            <div class="progress-title uppercase">{{ date('l, d M, Y',strtotime($track_orders[$i]['created_at'])) }}</div>
+                            <div class="progress-title uppercase">{{ __('Product Shift For Delevery') }}</div>
                         </li>
                         @else
                         <li>
                             <div class="icon"><i class="fas fa-arrow-alt-circle-right"></i></div>
-                            <div class="progress-title">{{ __('Processing') }}</div>
-                            <div class="progress-title">{{ __('Soon') }}</div>
+                            <div class="progress-title uppercase">{{ __('Processing') }}</div>
+                            <div class="progress-title uppercase">{{ __('Soon') }}</div>
                         </li>
                         @endif
                     @else
                     <li>
                         <div class="icon"><i class="fas fa-arrow-alt-circle-right"></i></div>
-                        <div class="progress-title">{{ __('Processing') }}</div>
-                        <div class="progress-title">{{ __('Soon') }}</div>
+                        <div class="progress-title uppercase">{{ __('Processing') }}</div>
+                        <div class="progress-title uppercase">{{ __('Soon') }}</div>
                     </li>
                     @endif
                 @endif
@@ -62,22 +62,22 @@
                         @if($track_orders[$i]['title'] == 'Delivered')
                         <li class="active">
                             <div class="icon"><i class="fas fa-check-circle"></i></div>
-                            <div class="progress-title">{{ __('Delivered') }}</div>
-                            <div class="progress-title">{{ date('l, d M, Y',strtotime($track_orders[$i]['created_at'])) }}</div>
-                            <div class="progress-title">{{ __('Product Delevery Compleate') }}</div>
+                            <div class="progress-title uppercase">{{ __('Delivered') }}</div>
+                            <div class="progress-title uppercase">{{ date('l, d M, Y',strtotime($track_orders[$i]['created_at'])) }}</div>
+                            <div class="progress-title uppercase">{{ __('Product Delevery Compleate') }}</div>
                         </li>
                         @else
                         <li>
                             <div class="icon"><i class="fas fa-check-circle"></i></div>
-                            <div class="progress-title">{{ __('Delivered') }}</div>
-                            <div class="progress-title">{{ __('Soon') }}</div>
+                            <div class="progress-title uppercase">{{ __('Delivered') }}</div>
+                            <div class="progress-title uppercase">{{ __('Soon') }}</div>
                         </li>
                         @endif
                     @else
                     <li>
                         <div class="icon"><i class="fas fa-check-circle"></i></div>
-                        <div class="progress-title">{{ __('Delivered') }}</div>
-                        <div class="progress-title">{{ __('Soon') }}</div>
+                        <div class="progress-title uppercase">{{ __('Delivered') }}</div>
+                        <div class="progress-title uppercase">{{ __('Soon') }}</div>
                     </li>
                     @endif
 
@@ -90,22 +90,22 @@
                         @if($track_orders[$i]['title'] == 'Canceled')
                         <li class="active">
                             <div class="icon"><i class="fas fa-times-circle"></i></div>
-                            <div class="progress-title">{{ __('Rejected') }}</div>
-                            <div class="progress-title">{{ date('l, d M, Y',strtotime($track_orders[$i]['created_at'])) }}</div>
-                            <div class="progress-title">{{ __('Product Delevery Rejected') }}</div>
+                            <div class="progress-title uppercase">{{ __('Rejected') }}</div>
+                            <div class="progress-title uppercase">{{ date('l, d M, Y',strtotime($track_orders[$i]['created_at'])) }}</div>
+                            <div class="progress-title uppercase">{{ __('Product Delevery Rejected') }}</div>
                         </li>
                         @else
                         <li>
                             <div class="icon"><i class="fas fa-times-circle"></i></div>
-                            <div class="progress-title">{{ __('Rejected') }}</div>
-                            <div class="progress-title">{{ __('Not') }}</div>
+                            <div class="progress-title uppercase">{{ __('Rejected') }}</div>
+                            <div class="progress-title uppercase">{{ __('Not') }}</div>
                         </li>
                         @endif
                     @else
                     <li>
                         <div class="icon"><i class="fas fa-times-circle"></i></div>
-                        <div class="progress-title">{{ __('Rejected') }}</div>
-                        <div class="progress-title">{{ __('Not') }}</div>
+                        <div class="progress-title uppercase">{{ __('Rejected') }}</div>
+                        <div class="progress-title uppercase">{{ __('Not') }}</div>
                     </li>
                     @endif
 

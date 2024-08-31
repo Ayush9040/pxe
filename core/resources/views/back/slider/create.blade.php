@@ -8,7 +8,7 @@
     <div class="card mb-4">
         <div class="card-body">
             <div class="d-sm-flex align-items-center justify-content-between">
-                <h3 class=" mb-0 bc-title"><b>{{ __('Create Slider') }}</b> </h3>
+                <h3 class=" mb-0 bc-title"><b>{{ __('Add') }}</b> </h3>
                 <a class="btn btn-primary btn-sm" href="{{route('back.slider.index')}}"><i class="fas fa-chevron-left"></i> {{ __('Back') }}</a>
                 </div>
         </div>
@@ -32,15 +32,15 @@
                                 <li class="nav-item">
                                   <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">{{ __('Home 1') }}</a>
                                 </li>
-                                <li class="nav-item">
-                                  <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">{{ __('Home 2') }}</a>
-                                </li>
-                                <li class="nav-item">
-                                  <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">{{ __('Home 3') }}</a>
-                                </li>
-                                <li class="nav-item">
-                                  <a class="nav-link" id="pills-home4-tab" data-toggle="pill" href="#pills-home4" role="tab" aria-controls="pills-home4" aria-selected="false">{{ __('Home 4') }}</a>
-                                </li>
+                                <!--<li class="nav-item">-->
+                                <!--  <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">{{ __('Home 2') }}</a>-->
+                                <!--</li>-->
+                                <!--<li class="nav-item">-->
+                                <!--  <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">{{ __('Home 3') }}</a>-->
+                                <!--</li>-->
+                                <!--<li class="nav-item">-->
+                                <!--  <a class="nav-link" id="pills-home4-tab" data-toggle="pill" href="#pills-home4" role="tab" aria-controls="pills-home4" aria-selected="false">{{ __('Home 4') }}</a>-->
+                                <!--</li>-->
                               </ul>
                               <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">

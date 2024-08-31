@@ -120,14 +120,14 @@
                             >{{$item->sort_details}}</textarea>
                     </div>
 
-                    <div class="form-group">
-                        <label for="details">{{ __('Description') }} *</label>
-                        <textarea name="details" id="details"
-                            class="form-control text-editor"
-                            rows="6"
-                            placeholder="{{ __('Enter Description') }}"
-                            >{{$item->details}}</textarea>
-                    </div>
+                    <!--<div class="form-group">-->
+                    <!--    <label for="details">{{ __('Description') }} *</label>-->
+                    <!--    <textarea name="details" id="details"-->
+                    <!--        class="form-control"-->
+                    <!--        rows="6"-->
+                    <!--        placeholder="{{ __('Enter Description') }}"-->
+                    <!--        >{{$item->details}}</textarea>-->
+                    <!--</div>-->
                 </div>
             </div>
             <div class="card">
@@ -301,6 +301,12 @@
                             <option value="{{ $brand->id }}" {{$brand->id == $item->brand_id ? 'selected' : ''}} >{{ $brand->name }}</option>
                             @endforeach
                         </select>
+                    </div>
+                    <div class="form-group ">
+                        <div class="row" style="padding-left:16px">
+                            <input type="checkbox" name="hypayarn" id="hypayarn" class="form-control" value="1" @if($item->hypayarn==1) {{_('checked')}} @endif style="width:auto;margin-right:15px">
+                            <label for="brand_id" style="padding-top:5px">{{ __('Material Hypoyarn') }} </label>
+                        </div>
                     </div>
                 </div>
             </div>

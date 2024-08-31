@@ -20,7 +20,7 @@
 		<div class="col-xl-12 col-lg-12 col-md-12">
         <form action="{{route('back.user.update',$user->id)}}" method="POST">
             @csrf
-            @method('PUT')
+            @method('PUT')  
             @include('alerts.alerts')
 			<div class="card">
 
@@ -49,11 +49,19 @@
                                          value="{{$user->phone}}" ></td>
                                 </tr>
                                 <input type="hidden" name="user_id" id="" value="{{$user->id}}">
+                               @if($user->vault==1)
+                                <tr>
+                                    <th>{{ __("Access code") }}</th>
+                                    <td><input type="password" name="password" class="form-control" id="text"
+                                        placeholder="{{ __('Access code') }}" value="" ></td>
+                                </tr>
+                                @else
                                 <tr>
                                     <th>{{ __("Password") }}</th>
                                     <td><input type="password" name="password" class="form-control" id="text"
                                         placeholder="{{ __('Password') }}" value="" ></td>
                                 </tr>
+                                @endif
 
                                 <tr>
                                     <th>{{ __("Total Orders") }}</th>
@@ -63,8 +71,42 @@
                                     <th>{{ __("Joined") }}</th>
                                     <td>{{$user->created_at->diffForHumans()}}</td>
                                 </tr>
-
-
+                                <tr>
+                                    <th>{{ __("Category") }}</th>
+                                    <td>
+                                        <select name="membership" id="membership">
+                                            <option value="white">white</option>
+                                            <option value="red">red</option>
+                                            <option value="black">black</option>
+                                            <option value="grey">grey</option>
+                                            <option value=""></option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                @if($user->b2bstatus==1 or $user->vault==1)
+                                <tr>
+                                   
+                                    <th>{{ __(" Customer Active") }}</th>
+                                    @if($user->activestatus==1)
+                                    <td>
+                                        <select name="activestatus" id="activestatus">
+                                            <option value="0">Inactive</option>
+                                            <option value="1" selected>Active</option>
+                                            
+                                        </select>
+                                    </td>
+                                    @else
+                                    <td>
+                                        <select name="activestatus" id="activestatus">
+                                            <option value="0" selected>Inactive</option>
+                                            <option value="1" >Active</option>
+                                            
+                                        </select>
+                                    </td>
+                                    @endif
+                                </tr>
+                                
+                                @endif
 
                             </table>
                             <button type="submit" class="btn btn-secondary ">{{ __('Submit') }}</button>

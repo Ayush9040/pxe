@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Front;
+use App\Mail\SendMail; 
+use Illuminate\Support\Facades\Mail;
 
 use Illuminate\{
     Http\Request,
@@ -15,12 +17,16 @@ use App\{
     Http\Controllers\Controller,
     Http\Requests\ReviewRequest,
     Http\Requests\SubscribeRequest,
-    Repositories\Front\FrontRepository
+    Repositories\Front\FrontRepository,
+    Http\Requests\AuthRequest
 };
 use App\Helpers\SmsHelper;
 use App\Models\Brand;
 use App\Models\CampaignItem;
+use App\Models\PremiumCategory;
 use App\Models\Category;
+use App\Models\Attribute;
+use App\Models\AttributeOption;
 use App\Models\ChieldCategory;
 use App\Models\Fcategory;
 use App\Models\HomeCutomize;
@@ -33,14 +39,25 @@ use App\Models\Slider;
 use App\Models\Subcategory;
 use App\Models\TrackOrder;
 use App\Models\Franchies;
+use App\Models\User;
+use App\Models\Exclusivedeal;
 use Illuminate\Support\Facades\Config;
+use Carbon\Carbon;
 use Storage;
+
 
 use function GuzzleHttp\json_decode;
 
 class FrontendController extends Controller
 {
 
+    protected $blogOneData=[];
+
+    protected $photo1 = null;
+    protected $title1 = null;
+
+    protected $date1 = null;
+    protected $details1 = null;
     /**
      * Constructor Method.
      *
@@ -62,7 +79,7 @@ class FrontendController extends Controller
 
 // -------------------------------- HOME ----------------------------------------
 
-	public function index()
+	public function index(Request $request)
 	{
         $setting = Setting::first();
 
@@ -253,6 +270,7 @@ class FrontendController extends Controller
             }
 
             $galleries = Gallery::all();
+            $exclusivedeal = Exclusivedeal::orderBy('id','desc')->get();
 
               // Fetch all products or any logic to get the product list
             $productsHome = Item::all();
@@ -262,18 +280,140 @@ class FrontendController extends Controller
         $details = $firstProduct ? $this->getProductDetails($firstProduct->slug) : null;
         // $item = Item::first();
         $allCat = Category::all();
+        $ourCat = Category::all();
+        // dd($ourCat);
+
+        // $attr_item_ids = [];
+        // if($request->attribute){
+        //     $attrubutes_get = Attribute::where('name',$request->attribute)->get();
+        //     foreach($attrubutes_get as $attr_item_id){
+        //         $attr_item_ids[] = $attr_item_id->item_id;
+        //     }
+        // }
+
+        $attrubutes_check =[];
+       
+        $options = AttributeOption::groupby('name')->select('attribute_id','name','id','keyword')->get();
+        
+        foreach($options as $option){
+            if(!in_array(Attribute::withCount('options')->findOrFail($option->attribute_id)->keyword,$attrubutes_check)){
+                $attrubutes_check[] = Attribute::withCount('options')->findOrFail($option->attribute_id)->keyword;
+            }
+        }
+
+        
+        $attrubutes = [];
+
+        foreach($attrubutes_check as $attr_new_get){
+            $attrubutes[] = Attribute::whereKeyword($attr_new_get)->first();
+        }
+
+        // $attr = [];
+
+        // $attr = $attrubutes[1];
+
+        // dd($attrubutes);
 
 
 
             // {"title1":"Watchtt","subtitle1":"50% OFF","url1":"#","title2":"Man","subtitle2":"40% OFF","url2":"#","img1":"1637766462banner-h2-4-1.jpeg","img2":"1637766420banner-h2-4-1.jpeg"}
+
+
+            $month = $request->input('month', date('m'));
+        $year = $request->input('year', date('Y'));
+
+        $blogs = $this->getBlogsByCurrentMonth();
+        // dd($blogs);
+
+        $blogOneData = [];
+            
+
+       
+
+        foreach ($blogs as $blog) {
+            if (($blog->blog == 1)) {
+                $blogOneData[] = $blog; // Store blog with 'blog' value 2
+            }
+        }
+
+
+
+        $photo1 = null;
+        $title1 = null;
+
+        $date1 = null;
+        $details1 = null;
+
+        if(!empty($blogOneData)){
+            $photo1 = $blogOneData[0]->photo;
+            $title1 = $blogOneData[0]->title;
+            $details1 = $blogOneData[0]->details;
+             $photo1 = trim($photo1, '"[]"');
+             $photo1 = rtrim($photo1, '&quot;');
+             $date1 =  date('d-m-Y', strtotime($blogOneData[0]->created_at)) ;
+        }
+
+
+        // dd($galleries[0]);
+
+        $premiumCategories = PremiumCategory::all()->toArray();
+
+        // dd($premiumCategories[0]['name']);
+
+
+        $trailer = Gallery::where('item_id', $item1)->get();
+
+
+        $trailerArray = $trailer->toArray();
+        // dd($trailer);
+
+
+        // Getting Attributes
+        // $getting_attr = Attribute::where('item_id', $item1)->get();
+        $getting_attr = Attribute::where('item_id', $item1)->first();
+
+        // $getting_attr_options_arr= [];
+        
+
+        // if (isset($getting_attr)) {
+            $getting_attr_id = $getting_attr->id;
+            $getting_attr_options = AttributeOption::where('attribute_id', $getting_attr_id)->get();
+
+        $getting_attr_options_arr = $getting_attr_options->toArray();
+        // }
+        // dd($getting_attr_options);
+
+        
+
+        // dd($getting_attr_options_arr);
+
+        
+
+
+
+
+            // dd($date1);
+
+
+
+
 
             return view('front.index',[
                 'hero_banner'   => $home_customize->hero_banner != '[]' ? json_decode($home_customize->hero_banner,true) : null,
                 'banner_first'   => json_decode($home_customize->banner_first,true),
                 'sliders'  => $sliders,
                 'allCat' => $allCat,
+                'title1' => $title1,
+                'premiumCategories' => $premiumCategories,
+                'date1' => $date1,
+            'details1' => $details1,
+            'trailerArray' => $trailerArray,
+                'ourCat' => $ourCat,
+                'getting_attr_options_arr' => $getting_attr_options_arr,
                 'details' => $details,
+                'attrubutes' => $attrubutes,
                 'galleries' => $galleries,
+                'exclusivedeal' =>$exclusivedeal,
                 'campaign_items' => CampaignItem::with('item')->whereStatus(1)->whereIsFeature(1)->orderby('id','desc')->get(),
                 'services' => Service::orderby('id','desc')->get(),
                 'posts'    => Post::with('category')->orderby('id','desc')->take(8)->get(),
@@ -380,25 +520,184 @@ class FrontendController extends Controller
 	public function blog(Request $request)
 	{
 
-        $tagz = '';
-        $tags = null;
-        $name = Post::pluck('tags')->toArray();
-        foreach($name as $nm)
-        {
-            $tagz .= $nm.',';
+        $month = $request->input('month', date('m'));
+        $year = $request->input('year', date('Y'));
+
+        $blogs = $this->getBlogsByCurrentMonth();
+        // dd($blogs);
+
+        $blogOneData = [];
+        $blogTwoData = [];
+        $blogThreeData = [];
+        $blogFourData = [];
+        $blogFiveData = [];
+        $blogSixData = [];
+        $blogSevenData = [];
+
+        foreach ($blogs as $blog) {
+            if (($blog->blog == 1)) {
+                $blogOneData[] = $blog; // Store blog with 'blog' value 2
+            } elseif (($blog->blog == 2)) {
+                $blogTwoData[] = $blog; // Store blog with 'blog' value 7
+            } elseif ($blog->blog == 3) {
+                $blogThreeData[] = $blog; // Store blog with 'blog' value 7
+            } elseif ($blog->blog == 4) {
+                $blogFourData[] = $blog; // Store blog with 'blog' value 7
+            } elseif ($blog->blog == 5) {
+                $blogFiveData[] = $blog; // Store blog with 'blog' value 7
+            } elseif ($blog->blog == 6) {
+                $blogSixData[] = $blog; // Store blog with 'blog' value 7
+            } elseif ($blog->blog == 7) {
+                $blogSevenData[] = $blog; // Store blog with 'blog' value 7
+            }
+            // Add more conditions as needed for other blog values
         }
-        $tags = array_unique(explode(',',$tagz));
 
-        if(Setting::first()->is_blog == 0) return back();
+        // dd($blogTwoData[0]->photo);
+        $photo2 = null;
+        $photo1 = null;
+        $title1 = null;
+        $title2 = null;
+        $details1 = null;
+        $details2 = null;
+        
 
-        if($request->ajax()) return view('front.blog.list',['posts' => $this->repository->displayPosts($request)]);
+        $title3 = null;
+        $photo3 = null;
+        $details3 = null;
+        $title4 = null;
+        $photo4 = null;
+        $details4 = null;
 
-		return view('front.blog.index',['posts' => $this->repository->displayPosts($request),
-        'recent_posts'       => Post::orderby('id','desc')->take(4)->get(),
-        'categories' => \App\Models\Bcategory::withCount('posts')->whereStatus(1)->get(),
-        'tags'       => array_filter($tags)
+        $title5 = null;
+        $photo5 = null;
+        $details5 = null;
+
+        $title6 = null;
+        $photo6 = null;
+        $details6 = null;
+
+        $title7 = null;
+        $photo7 = null;
+        $details7 = null;
+        $date1 = null;
+        $date2 = null;
+        $date3 = null;
+        $date4 = null;
+        $date5 = null;
+        $date6 = null;
+        $date7 = null;
+
+        if(!empty($blogTwoData)){
+            $photo2 = $blogTwoData[0]->photo;
+            $title2 = $blogTwoData[0]->title;
+            $details2 = $blogTwoData[0]->details;
+            $photo2 = trim($photo2, '"[]"');
+            $photo2 = rtrim($photo2, '&quot;');
+             $date2 = date('d-m-Y', strtotime($blogTwoData[0]->created_at));
+        }
+
+        
+        if(!empty($blogOneData)){
+            $photo1 = $blogOneData[0]->photo;
+            $title1 = $blogOneData[0]->title;
+            $details1 = $blogOneData[0]->details;
+             $photo1 = trim($photo1, '"[]"');
+             $photo1 = rtrim($photo1, '&quot;');
+             $date1 =  date('d-m-Y', strtotime($blogOneData[0]->created_at)) ;
+        }
+
+        if(!empty($blogThreeData)){
+            $photo3 = $blogThreeData[0]->photo;
+            $title3 = $blogThreeData[0]->title;
+            $details3 = $blogThreeData[0]->details;
+             $photo3 = trim($photo3, '"[]"');
+             $photo3 = rtrim($photo3, '&quot;');
+              $date3 = date('d-m-Y', strtotime($blogThreeData[0]->created_at)) ;
+        }
+
+        if(!empty($blogFourData)){
+            $photo4 = $blogFourData[0]->photo;
+            $title4 = $blogFourData[0]->title;
+            $details4 = $blogFourData[0]->details;
+             $photo4 = trim($photo4, '"[]"');
+             $photo4 = rtrim($photo4, '&quot;');
+              $date4 = date('d-m-Y', strtotime($blogFourData[0]->created_at)) ;
+        }
+
+        if(!empty($blogFiveData)){
+            $photo5 = $blogFiveData[0]->photo;
+            $title5 = $blogFiveData[0]->title;
+            $details5 = $blogFiveData[0]->details;
+             $photo5 = trim($photo5, '"[]"');
+             $photo5 = rtrim($photo5, '&quot;');
+              $date5 = date('d-m-Y', strtotime($blogFiveData[0]->created_at)) ;
+        }
+
+
+        if(!empty($blogSixData)){
+            $photo6 = $blogSixData[0]->photo;
+            $title6 = $blogSixData[0]->title;
+            $details6 = $blogSixData[0]->details;
+             $photo6 = trim($photo6, '"[]"');
+             $photo6 = rtrim($photo6, '&quot;');
+              $date6 = date('d-m-Y', strtotime( $blogSixData[0]->created_at));
+        }
+
+        if(!empty($blogSevenData)){
+            $photo7 = $blogSevenData[0]->photo;
+            $title7 = $blogSevenData[0]->title;
+            $details7 = $blogSevenData[0]->details;
+             $photo7 = trim($photo7, '"[]"');
+             $photo7 = rtrim($photo7, '&quot;');
+              $date7 = date('d-m-Y', strtotime( $blogSevenData[0]->created_at)) ;
+        }
+
+        // dd($blogOneData);
+        
+        $currentYear = date('Y');
+        $currentMonth = date('m');
+
+
+        return view('front.bloog', [
+            'blogTwoData' => $blogTwoData,
+            'blogOneData' => $blogOneData,
+            'blogThreeData' => $blogThreeData,
+            'blogFourData' => $blogFourData,
+            'blogFiveData' => $blogFiveData,
+            'blogSixData' => $blogSixData,
+            'blogSevenData' => $blogSevenData,
+            'title1' => $title1,
+            'title2' => $title2,
+            'photo2' => $photo2,
+            'photo1' => $photo1,
+            'details1' => $details1,
+            'details2' => $details2,
+            'title3' => $title3,
+            'photo3' => $photo3,
+            'details3' => $details3,
+            'title4' => $title4,
+            'photo4' => $photo4,
+            'details4' => $details4,
+            'title5' => $title5,
+            'photo5' => $photo5,
+            'details5' => $details5,
+            'title6' => $title6,
+            'photo6' => $photo6,
+            'details6' => $details6,
+            'title7' => $title7,
+            'photo7' => $photo7,
+            'details7' => $details7,
+            'currentMonth' => $currentMonth,
+            'currentYear' => $currentYear,
+            'date1' => $date1,
+            'date2' => $date2,
+            'date3' => $date3,
+            'date4' => $date4,
+            'date5' => $date5,
+            'date6' => $date6,
+            'date7' => $date7,
         ]);
-
 
 	}
 
@@ -515,6 +814,119 @@ public function page($slug)
         $email = new EmailHelper();
         $email->sendCustomMail($emailData);
         Session::flash('success',__('Thank you for contacting with us, we will get back to you shortly.'));
+        return redirect()->back();
+    }
+
+
+
+    public function b2bsubmit(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|unique:users,email'
+        ]);
+        
+
+        // update user table
+
+            $input = $request->all();
+
+            $user = new User;
+            $input['password'] = bcrypt($request['password']);
+            $input['email'] = $input['email'];
+            $input['first_name'] = $input['email'];
+            $input['last_name'] = '';
+            $input['phone'] = $input['phone'];
+            $input['bill_company'] = $input['bill_company'];
+            $input['bill_address1'] = $input['bill_address1'];
+            $input['bill_address2'] = $input['bill_address2'];
+            $input['bill_city'] = $input['bill_city'];
+            $input['gst_number'] = $input['gst_number'];
+            $input['b2bstatus'] = 1;
+            $input['activestatus'] = 0;
+            // $verify = Str::random(6);
+            // $input['email_token'] = $verify;
+            $user->fill($input)->save();
+
+
+            // Mail Working
+            // $to = $request->input('email');
+            // $name = $request->input('first_name') . " " . $request->input('last_name');
+            // $subject = "Registration Email";
+            // $data =["name" => $name,"message"=>"Email Successful","mail_type" => "User"];
+            // $email = new SendMail($subject,  $data);
+            // try{
+            //     $mail_success = Mail::to($to)->send($email);
+            //     if(empty(Mail::failures())){
+            //     $adminto = 'admin@block55.in';
+            //     $admindata =["name" => $name,"message"=>"Registration Successful", "mail" => $request->input('email'),"mail_type"=> "Admin"];
+            //     $adminemail = new SendMail($subject,  $admindata);
+            //     $mail_success = Mail::to($adminto)->send($adminemail);
+            //     }
+            // }
+            // catch(Exception $e){
+            //     echo $e->message;
+            // }
+
+
+           
+
+        Session::flash('success',__('Account Register Successfully please wait for admin approval '));
+        return redirect()->back();
+    }
+    public function vaultsubmit(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|unique:users,email'
+        ]);
+        
+
+        // update user table
+       
+            $input = $request->all();
+            if($input['red_key']==='B55 024 25 RDY17')
+            {
+            $user = new User;
+            $input['password'] = '';
+            $input['email'] = $input['email'];
+            $input['first_name'] = $input['first_name'];
+            $input['last_name'] =  $input['last_name'];
+            $input['phone'] = '';
+            $input['b2bstatus'] = 0;
+            $input['vault'] = 1;
+            $input['activestatus'] = 0;
+            // $verify = Str::random(6);
+            // $input['email_token'] = $verify;
+            $user->fill($input)->save();
+
+
+            // Mail Working
+            $to = $request->input('email');
+            $name = $request->input('first_name') . " " . $request->input('last_name');
+            $subject = "Registration Email";
+            $data =["name" => $name,"message"=>"Email Successful","mail_type" => "User"];
+            $email = new SendMail($subject,  $data);
+            try{
+                $mail_success = Mail::to($to)->send($email);
+                if(empty(Mail::failures())){
+                $adminto = 'admin@block55.in';
+                $admindata =["name" => $name,"message"=>"Registration Successful", "mail" => $request->input('email'),"mail_type"=> "Admin"];
+                $adminemail = new SendMail($subject,  $admindata);
+                $mail_success = Mail::to($adminto)->send($adminemail);
+                }
+            }
+            catch(Exception $e){
+                echo $e->message;
+            }
+            Session::flash('success',__('Account Register Successfully please wait for admin approval '));
+
+        }
+        else{
+            Session::flash('error',__('Account Register Failed please Check red key '));
+        }
+      
+           
+
+       
         return redirect()->back();
     }
 
@@ -701,7 +1113,184 @@ public function page($slug)
             return view('front.crudformoperation.update');
         }
 
+
+        public function about()
+  {
+      return view('front.about');
+  }
+
+  public function getBlogsByCurrentMonth()
+  {
+      // Get current year and month
+      $currentYear = date('Y');
+      $currentMonth = date('m');
+
+      // Get the first and last day of the current month
+      $startDate = Carbon::now()->startOfMonth();
+      $endDate = Carbon::now()->endOfMonth();
+
+      // Retrieve blog posts within the current month
+    //   $blogs = Post::whereBetween('created_at', [$startDate, $endDate])->get();
+
+    $blogs = Post::all();
+
+    // dd($blogs);
+
+      return $blogs;
+  }
+
+  private function getBlogsByMonth($year, $month)
+  {
+      $startDate = Carbon::createFromDate($year, $month)->startOfMonth();
+      $endDate = Carbon::createFromDate($year, $month)->endOfMonth();
+      return Post::whereBetween('created_at', [$startDate, $endDate])->get();
+  }
+
+  public function bloog(Request $request)
+  {
+
+    
+
+    $month = $request->input('month', date('m'));
+        $year = $request->input('year', date('Y'));
+
+        $blogs = $this->getBlogsByCurrentMonth();
+        // dd($blogs);
+
+        $blogOneData = [];
+        $blogTwoData = [];
+        $blogThreeData = [];
+        $blogFourData = [];
+        $blogFiveData = [];
+        $blogSixData = [];
+        $blogSevenData = [];
+
+        foreach ($blogs as $blog) {
+            if (($blog->blog == 1)) {
+                $blogOneData[] = $blog; // Store blog with 'blog' value 2
+            } elseif (($blog->blog == 2)) {
+                $blogTwoData[] = $blog; // Store blog with 'blog' value 7
+            } elseif ($blog->blog == 3) {
+                $blogThreeData[] = $blog; // Store blog with 'blog' value 7
+            } elseif ($blog->blog == 4) {
+                $blogFourData[] = $blog; // Store blog with 'blog' value 7
+            } elseif ($blog->blog == 5) {
+                $blogFiveData[] = $blog; // Store blog with 'blog' value 7
+            } elseif ($blog->blog == 6) {
+                $blogSixData[] = $blog; // Store blog with 'blog' value 7
+            } elseif ($blog->blog == 7) {
+                $blogSevenData[] = $blog; // Store blog with 'blog' value 7
+            }
+            // Add more conditions as needed for other blog values
+        }
+
+        // dd($blogTwoData[0]->photo);
+        $photo2 = null;
+        $photo1 = null;
+        $title1 = null;
+        $title2 = null;
+        $details1 = null;
+        $details2 = null;
+       
+        if(!empty($blogTwoData)){
+            $photo2 = $blogTwoData[0]->photo;
+            $title2 = $blogTwoData[0]->title;
+            $details2 = $blogTwoData[0]->details;
+            $photo2 = trim($photo2, '"[]"');
+            $photo2 = rtrim($photo2, '&quot;');
+        }
+
         
+        if(!empty($blogOneData)){
+            $photo1 = $blogOneData[0]->photo;
+            $title1 = $blogOneData[0]->title;
+            $details1 = $blogOneData[0]->details;
+        $photo1 = trim($photo1, '"[]"');
+        $photo1 = rtrim($photo1, '&quot;');
+        }
+
+        // dd($blogOneData);
+        
+        $currentYear = date('Y');
+        $currentMonth = date('m');
+
+
+        return view('front.bloog', [
+            'blogTwoData' => $blogTwoData,
+            'blogOneData' => $blogOneData,
+            'blogThreeData' => $blogThreeData,
+            'blogFourData' => $blogFourData,
+            'blogFiveData' => $blogFiveData,
+            'blogSixData' => $blogSixData,
+            'blogSevenData' => $blogSevenData,
+            'title1' => $title1,
+            'title2' => $title2,
+            'photo2' => $photo2,
+            'photo1' => $photo1,
+            'details1' => $details1,
+            'details2' => $details2,
+            'currentMonth' => $currentMonth,
+            'currentYear' => $currentYear
+        ]);
+  }
+  public function b2b(){
+
+    $setting = Setting::first();
+
+    if($setting->theme == 'theme1'){
+        $sliders = Slider::where('home_page','theme1')->get();
+    }elseif($setting->theme == 'theme2'){
+        $sliders = Slider::where('home_page','theme2')->get();
+    }elseif($setting->theme == 'theme3'){
+        $sliders = Slider::where('home_page','theme3')->get();
+    }else{
+        $sliders = Slider::where('home_page','theme4')->get();
+    }
+
+    return view('front.b2b', [
+        'sliders'  => $sliders
+    ]);
+    }
+    public function vault(){
+        return view('front.vault');
+    }
+
+    // Bundle
+
+public function bundle()
+{
+    // if(Setting::first()->is_contact == 0){
+    //     return back();
+    // }
+
+    
+    return view('front.bundle');
+}
+
+public function b2blogin()
+{
+    // if(Setting::first()->is_contact == 0){
+    //     return back();
+    // }
+
+    $setting = Setting::first();
+
+    if($setting->theme == 'theme1'){
+        $sliders = Slider::where('home_page','theme1')->get();
+    }elseif($setting->theme == 'theme2'){
+        $sliders = Slider::where('home_page','theme2')->get();
+    }elseif($setting->theme == 'theme3'){
+        $sliders = Slider::where('home_page','theme3')->get();
+    }else{
+        $sliders = Slider::where('home_page','theme4')->get();
+    }
+    
+    return view('front.b2b_login', [
+        'sliders'  => $sliders
+    ]);
+}
         
 }
+
+
 

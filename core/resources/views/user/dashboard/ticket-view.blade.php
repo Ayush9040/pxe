@@ -5,21 +5,21 @@
 @section('content')
 
 <!-- Page Title-->
-<div class="page-title">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <ul class="breadcrumbs">
-                    <li><a href="{{__('front.index')}}">{{__('Home')}}</a> </li>
-                    <li class="separator"></li>
-                    <li>{{__('Tickets')}} </li>
-                  </ul>
-            </div>
-        </div>
-    </div>
-  </div>
+<!--<div class="page-title">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-12">-->
+<!--                <ul class="breadcrumbs">-->
+<!--                    <li><a href="{{__('front.index')}}">{{__('Home')}}</a> </li>-->
+<!--                    <li class="separator"></li>-->
+<!--                    <li>{{__('Tickets')}} </li>-->
+<!--                  </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--  </div>-->
   <!-- Page Content-->
-  <div class="container padding-bottom-3x mb-1">
+  <div class="container padding-bottom-3x mb-1 my-3">
   <div class="row">
          @include('includes.user_sitebar')
           <div class="col-lg-8">
@@ -27,10 +27,10 @@
             <div class="mb-2">
                 <div class="card">
                     <div class="card-body d-flex flex-row justify-content-between align-items-center">
-                        <p class="mb-0"><span class="badge badge-primary">{{$ticket->status}}</span> {{__('Subject :')}} {{$ticket->subject}}</p>
-                        <a href="{{ route('user.ticket') }}" class="btn btn-primary btn-sm">{{__('Back')}}</a>
+                        <p class="mb-0 uppercase"><span class="badge badge-primary">{{$ticket->status}}</span> {{__('Subject :')}} {{$ticket->subject}}</p>
+                        <a href="{{ route('user.ticket') }}" class="btn btn-primary btn-sm uppercase">{{__('Back')}}</a>
                         @if($ticket->file)
-                        <a href="{{asset('assets/files/'.$ticket->file)}}" title="Download" class="btn btn-primary btn-sm" download> {{__('Attachment')}}</a>
+                        <a href="{{asset('assets/files/'.$ticket->file)}}" title="Download" class="btn btn-primary btn-sm uppercase" download> {{__('Attachment')}}</a>
                         @endif
                     </div>
                 </div>
@@ -43,12 +43,12 @@
                         <div class="card mb-3">
                             <div class="card-body">
                                 <div class="media">
-                                    <div class="width-100 mr-3" >
+                                    <div class="width-100 mr-3 uppercase" >
                                         {{__('Admin')}}
                                     </div>
-                                    <div class="media-body">
+                                    <div class="media-body uppercase">
                                         <small><span>{{__('Posted on')}} {{ \Carbon\Carbon::parse($message->created_at)->diffForHumans() }}</span></small>
-                                      <p>{{$message->message}}</p>
+                                      <p class="uppercase">{{$message->message}}</p>
                                     </div>
                                   </div>
                             </div>
@@ -57,7 +57,7 @@
                         <div class="card mb-3">
                             <div class="card-body">
                                 <div class="media">
-                                    <div class="width-100 mr-3" >
+                                    <div class="width-100 mr-3 uppercase" >
                                         {{__('Me')}}
                                     </div>
                                     <div class="media-body">
@@ -76,16 +76,16 @@
                         <input type="hidden" value="{{$ticket->id}}" name="ticket_id">
                         <div class="row">
                             <div class="col-12 form-group">
-                                <label for="inputMessage">{{__('Message')}} *</label>
-                                <textarea name="message" class="form-control" id="inputMessage" placeholder="{{__('Message')}}" rows="6"></textarea>
+                                <label for="inputMessage" class="uppercase">{{__('Message')}} *</label>
+                                <textarea name="message" class="form-control uppercase" id="inputMessage" placeholder="{{__('Message')}}" rows="6"></textarea>
                             @error('message')
-                                <p class="text-danger">{{$message}}</p>
+                                <p class="text-danger uppercase">{{$message}}</p>
                             @enderror
                             </div>
                         </div>
 
                         <div class="d-flex justify-content-between mt-3">
-                            <button class="btn btn-primary btn-sm" type="submit"><span>{{__('Reply')}}</span></button>
+                            <button class="btn btn-primary btn-sm uppercase" type="submit"><span>{{__('Reply')}}</span></button>
                         </div>
                     </form>
                     @endif

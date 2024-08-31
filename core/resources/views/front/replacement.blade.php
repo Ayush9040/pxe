@@ -8,7 +8,7 @@
 @endsection
 @section('content')
 
-<div class="container mt-5">
+<div class="container mt-5 my-3">
         <div class="formate-1">
             <div class="title">
                 <h1 class="policy-title text-center">REPLACEMENT POLICY</h1>

@@ -3,19 +3,19 @@
       <div class="modal-dialog" >
         <div class="modal-content">
           <div class="modal-header">
-            <h6 class="modal-title">{{__('Transaction Cash On Delivery')}}</h6>
+            <h6 class="modal-title uppercase">{{__('Transaction Cash On Delivery')}}</h6>
             <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           </div>
           <form action="{{route('front.checkout.submit')}}" method="POST">
             @csrf
             <input type="hidden" name="payment_method" value="Cash On Delivery" id="">
-            <input type="hidden" name="state_id" value="{{auth()->check() && auth()->user()->state_id ? auth()->user()->state_id : ''}}" class="state_id_setup">
+            <input type="hidden" name="state_id" value="{{auth()->check() && auth()->user()->state_id ? auth()->user()->state_id : ''}}" class="state_id_setup uppercase">
             <div class="card-body">
-              <p>{{PriceHelper::GatewayText('cod')}}</p>
+              <p class="uppercase">{{PriceHelper::GatewayText('cod')}}</p>
             </div>
           <div class="modal-footer">
-            <button class="btn btn-primary btn-sm" type="button" data-bs-dismiss="modal"><span>{{ __('Cancel') }}</span></button>
-            <button class="btn btn-primary btn-sm" type="submit"><span>{{__('Cash On Delivery')}}</span></button>
+            <button class="btn btn-primary btn-sm uppercase" type="button" data-bs-dismiss="modal"><span>{{ __('Cancel') }}</span></button>
+            <button class="btn btn-primary btn-sm uppercase" type="submit"><span>{{__('Cash On Delivery')}}</span></button>
           </form>
           </div>
         </div>
@@ -26,19 +26,19 @@
       <div class="modal-dialog" >
         <div class="modal-content">
           <div class="modal-header">
-            <h6 class="modal-title">{{ __('Transactions via Mollie') }}</h6>
+            <h6 class="modal-title uppercase">{{ __('Transactions via Mollie') }}</h6>
             <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           </div>
           <div class="modal-body">
-            <p>{{PriceHelper::GatewayText('mollie')}}</p>
+            <p class="uppercase">{{PriceHelper::GatewayText('mollie')}}</p>
           </div>
           <div class="modal-footer">
             <form action="{{route('front.checkout.submit')}}" method="POST">
               @csrf
               <input type="hidden" name="payment_method" value="Mollie">
               <input type="hidden" name="state_id" value="{{auth()->check() && auth()->user()->state_id ? auth()->user()->state_id : ''}}" class="state_id_setup">
-            <button class="btn btn-primary btn-sm" type="button" data-bs-dismiss="modal"><span>{{ __('Cancel') }}</span></button>
-            <button class="btn btn-primary btn-sm" type="submit"><span>{{ __('Checkout With Mollie') }}</span></button>
+            <button class="btn btn-primary btn-sm uppercase" type="button" data-bs-dismiss="modal"><span>{{ __('Cancel') }}</span></button>
+            <button class="btn btn-primary btn-sm uppercase" type="submit"><span>{{ __('Checkout With Mollie') }}</span></button>
           </form>
           </div>
         </div>
@@ -52,19 +52,19 @@
 
         <div class="modal-content">
           <div class="modal-header">
-            <h6 class="modal-title">{{__('Transactions via PayPal')}}</h6>
-            <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h6 class="modal-title uppercase">{{__('Transactions via PayPal')}}</h6>
+            <button class="close uppercase" type="button" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           </div>
           <div class="modal-body">
             <div class="card-body">
-              <p>{{PriceHelper::GatewayText('paypal')}}</p>
+              <p class="uppercase">{{PriceHelper::GatewayText('paypal')}}</p>
               </div>
           </div>
           <input type="hidden" name="payment_method" value="Paypal">
-          <input type="hidden" name="state_id" value="{{auth()->check() && auth()->user()->state_id ? auth()->user()->state_id : ''}}" class="state_id_setup">
+          <input type="hidden" name="state_id" value="{{auth()->check() && auth()->user()->state_id ? auth()->user()->state_id : ''}}" class="state_id_setup uppercase">
           <div class="modal-footer">
-            <button class="btn btn-primary btn-sm" type="button" data-bs-dismiss="modal"><span>{{ __('Cancel') }}</span></button>
-            <button class="btn btn-primary btn-sm" type="submit"><span>{{__('Checkout With PayPal')}}</span></button>
+            <button class="btn btn-primary btn-sm uppercase" type="button" data-bs-dismiss="modal"><span>{{ __('Cancel') }}</span></button>
+            <button class="btn btn-primary btn-sm uppercase" type="submit"><span>{{__('Checkout With PayPal')}}</span></button>
           </div>
         </div>
 
@@ -77,7 +77,7 @@
       <div class="modal-dialog" >
         <div class="modal-content">
           <div class="modal-header">
-            <h6 class="modal-title">{{__('Transactions via Stripe')}}</h6>
+            <h6 class="modal-title uppercase">{{__('Transactions via Stripe')}}</h6>
             <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           </div>
           <div class="modal-body">
@@ -86,26 +86,26 @@
                   <form class="interactive-credit-card row" action="{{route('front.checkout.submit')}}" method="POST">
                     @csrf
                     <div class="form-group col-sm-12">
-                      <input class="form-control" type="text" name="card" placeholder="{{ __('Card Number') }}" required>
+                      <input class="form-control uppercase" type="text" name="card" placeholder="{{ __('Card Number') }}" required>
                     </div>
                  <input type="hidden" name="payment_method" value="Stripe">
-                 <input type="hidden" name="state_id" value="{{auth()->check() && auth()->user()->state_id ? auth()->user()->state_id : ''}}" class="state_id_setup">
+                 <input type="hidden" name="state_id" value="{{auth()->check() && auth()->user()->state_id ? auth()->user()->state_id : ''}}" class="state_id_setup uppercase">
                     <div class="form-group col-sm-6">
-                      <input class="form-control" type="text" name="month" placeholder="{{__('Expitation Month')}}" required>
+                      <input class="form-control uppercase" type="text" name="month" placeholder="{{__('Expitation Month')}}" required>
                     </div>
                     <div class="form-group col-sm-6">
-                      <input class="form-control" type="text" name="year" placeholder="{{__('Expitation Year')}}" required>
+                      <input class="form-control uppercase" type="text" name="year" placeholder="{{__('Expitation Year')}}" required>
                     </div>
                     <div class="form-group col-sm-12">
-                      <input class="form-control" type="text" name="cvc" placeholder="{{ __('CVV') }}" required>
+                      <input class="form-control uppercase" type="text" name="cvc" placeholder="{{ __('CVV') }}" required>
                     </div>
 
                     <p class="p-3">{{PriceHelper::GatewayText('stripe')}}</p>
                 </div>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-primary btn-sm" type="button" data-bs-dismiss="modal"><span>{{ __('Cancel') }}</span></button>
-            <button class="btn btn-primary btn-sm" type="submit"><span>{{__('Chekout With Stripe')}}</span></button>
+            <button class="btn btn-primary btn-sm uppercase" type="button" data-bs-dismiss="modal"><span>{{ __('Cancel') }}</span></button>
+            <button class="btn btn-primary btn-sm uppercase" type="submit"><span>{{__('Chekout With Stripe')}}</span></button>
           </div>
         </form>
         </div>
@@ -117,7 +117,7 @@
           <div class="modal-dialog" >
             <div class="modal-content">
               <div class="modal-header">
-                <h6 class="modal-title">{{__('Transactions via Authorize.Net')}}</h6>
+                <h6 class="modal-title uppercase">{{__('Transactions via Authorize.Net')}}</h6>
                 <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               </div>
               <div class="modal-body">
@@ -126,26 +126,26 @@
                       <form class="interactive-credit-card row" action="{{route('front.authorize.submit')}}" method="POST">
                         @csrf
                         <div class="form-group col-sm-12">
-                          <input class="form-control" type="text" name="card" placeholder="{{ __('Card Number') }}" required>
+                          <input class="form-control uppercase" type="text" name="card" placeholder="{{ __('Card Number') }}" required>
                         </div>
                         <input type="hidden" name="payment_method" value="Authorize.Net">
                         <input type="hidden" name="state_id" value="{{auth()->check() && auth()->user()->state_id ? auth()->user()->state_id : ''}}" class="state_id_setup">
                         <div class="form-group col-sm-6">
-                          <input class="form-control" type="text" name="month" placeholder="{{__('Expitation Month')}}" required>
+                          <input class="form-control uppercase" type="text" name="month" placeholder="{{__('Expitation Month')}}" required>
                         </div>
                         <div class="form-group col-sm-6">
-                          <input class="form-control" type="text" name="year" placeholder="{{__('Expitation Year')}}" required>
+                          <input class="form-control uppercase" type="text" name="year" placeholder="{{__('Expitation Year')}}" required>
                         </div>
                         <div class="form-group col-sm-12">
-                          <input class="form-control" type="text" name="cvc" placeholder="{{ __('CVV') }}" required>
+                          <input class="form-control uppercase" type="text" name="cvc" placeholder="{{ __('CVV') }}" required>
                         </div>
 
-                        <p class="p-3">{{PriceHelper::GatewayText('authorize')}}</p>
+                        <p class="p-3 uppercase">{{PriceHelper::GatewayText('authorize')}}</p>
                     </div>
               </div>
               <div class="modal-footer">
-                <button class="btn btn-primary btn-sm" type="button" data-bs-dismiss="modal"><span>{{ __('Cancel') }}</span></button>
-                <button class="btn btn-primary btn-sm" type="submit"><span>{{__('Chekout With Stripe')}}</span></button>
+                <button class="btn btn-primary btn-sm uppercase" type="button" data-bs-dismiss="modal"><span>{{ __('Cancel') }}</span></button>
+                <button class="btn btn-primary btn-sm uppercase" type="submit"><span>{{__('Chekout With Stripe')}}</span></button>
               </div>
             </form>
             </div>
@@ -160,19 +160,19 @@
           @csrf
         <div class="modal-content">
           <div class="modal-header">
-            <h6 class="modal-title">{{__('Transactions via PayPal')}}</h6>
+            <h6 class="modal-title uppercase">{{__('Transactions via PayPal')}}</h6>
             <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           </div>
           <div class="modal-body">
             <div class="card-body">
-              <p>{{PriceHelper::GatewayText('paypal')}}</p>
+              <p class="uppercase">{{PriceHelper::GatewayText('paypal')}}</p>
               </div>
           </div>
           <input type="hidden" name="payment_method" value="Paypal">
           <input type="hidden" name="state_id" value="{{auth()->check() && auth()->user()->state_id ? auth()->user()->state_id : ''}}" class="state_id_setup">
           <div class="modal-footer">
-            <button class="btn btn-primary btn-sm" type="button" data-bs-dismiss="modal"><span>{{ __('Cancel') }}</span></button>
-            <button class="btn btn-primary btn-sm" type="submit"><span>{{__('Checkout With PayPal')}}</span></button>
+            <button class="btn btn-primary btn-sm uppercase" type="button" data-bs-dismiss="modal"><span>{{ __('Cancel') }}</span></button>
+            <button class="btn btn-primary btn-sm uppercase" type="submit"><span>{{__('Checkout With PayPal')}}</span></button>
           </div>
         </div>
         </form>
@@ -298,7 +298,7 @@
     $paydata = $paymentData->convertJsonData();
 @endphp
 
-@if ($paymentData->status == 1)
+<!-- @if ($paymentData->status == 1)
 {{-- MERCADOPAGO --}}
   <div class="modal fade" id="mercadopago" tabindex="-1"  aria-hidden="true">
     <form class="interactive-credit-card row" id="mercadopagofrom" action="{{route('front.mercadopago.submit')}}" method="POST">
@@ -479,7 +479,7 @@
 
     </script>
   </div>
-@endif
+@endif -->
 
 
 {{-- Paystack --}}
@@ -521,7 +521,7 @@ $billing = Session::get('billing_address');
   let email = $('#checkout_email_billing').val();
   $(document).on('submit','#paystack_form',function(e){
     e.preventDefault();
-      var total = {{PriceHelper::cartTotal(Session::get('cart'))}};
+       total = {{PriceHelper::cartTotal(Session::get('cart'))}};
           total = Math.round(total);
 
           var handler = PaystackPop.setup({

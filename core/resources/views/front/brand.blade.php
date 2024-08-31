@@ -9,19 +9,19 @@
 
 @section('content')
     <!-- Page Title-->
-<div class="page-title">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <ul class="breadcrumbs">
-                    <li><a href="{{(route('front.index'))}}">{{__('Home')}}</a> </li>
-                    <li class="separator">&nbsp;</li>
-                    <li>{{__('Brand')}}</li>
-                  </ul>
-            </div>
-        </div>
-    </div>
-  </div>
+<!--<div class="page-title">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-12">-->
+<!--                <ul class="breadcrumbs">-->
+<!--                    <li><a href="{{(route('front.index'))}}">{{__('Home')}}</a> </li>-->
+<!--                    <li class="separator">&nbsp;</li>-->
+<!--                    <li>{{__('Brand')}}</li>-->
+<!--                  </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--  </div>-->
   <!-- Page Content-->
   <div class="container pt-0 pb-5">
     <div class="row g-3">

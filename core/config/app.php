@@ -26,6 +26,7 @@ return [
     |
     */
 
+    // 'env' => env('APP_ENV', 'development').
     'env' => env('APP_ENV', 'production'),
 
     /*
@@ -39,7 +40,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool) env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -53,7 +54,7 @@ return [
     */
 
     // 'url' => env('APP_URL', 'http://localhost'),
-    'url' => env('APP_URL', 'http://localhost/jkkmecom'),
+    'url' => env('APP_URL', 'http://localhost'),
 
 
     'asset_url' => env('ASSET_URL', null),
@@ -236,6 +237,7 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'OrderHelper' => App\Helpers\OrderHelper::class,
         'PriceHelper' => App\Helpers\PriceHelper::class,
+        
     ],
 
 ];

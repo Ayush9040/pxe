@@ -1,11 +1,18 @@
 @extends('master.back-login')
+@section('title')
+    {{__('Login')}}
+@endsection
 
 @section('content')
 
         <div class="wrapper wrapper-login">
-            <div class="container container-login animated fadeIn" style="">
-                <h3 class="text-center">{{ __('Sign In To Admin') }}</h3>
-                <div class="login-form">
+            <div class="container container-login animated fadeIn" style="padding: 30px 25px;">
+               
+               <div class="d-flex justify-content-center" style="margin-bottom: 1rem;">
+               <img src="{{asset('assets/images/logofooter.png')}}" style="width:100px; height: 50px;" alt="">
+               </div>
+               <h3 class="text-center">{{ __('Sign In To Admin') }}</h3>
+                <div class="login-form" style="padding-top: 15px;">
 
                     <form action="{{ route('back.login.submit') }}" method="POST">
 

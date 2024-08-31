@@ -1,0 +1,81 @@
+<?php $__env->startSection('content'); ?>
+
+<div class="container-fluid">
+
+	<!-- Page Heading -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="d-sm-flex align-items-center justify-content-between">
+                <h3 class="mb-0 bc-title"><b><?php echo e(__('Create FAQ')); ?></b> </h3>
+                <a class="btn btn-secondary btn-rounded btn-sm" href="<?php echo e(route('back.faq.index')); ?>"><i class="fas fa-chevron-left"></i> <?php echo e(__('Back')); ?></a>
+                </div>
+        </div>
+    </div>
+
+	<!-- Form -->
+	<div class="row">
+
+		<div class="col-xl-12 col-lg-12 col-md-12">
+
+			<div class="card o-hidden border-0 shadow-lg">
+				<div class="card-body p-0">
+					<!-- Nested Row within Card Body -->
+					<div class="row justify-content-center">
+						<div class="col-lg-10">
+							<div class="p-5">
+								<form class="admin-form" action="<?php echo e(route('back.faq.store')); ?>" method="POST"
+									enctype="multipart/form-data">
+
+                                    <?php echo csrf_field(); ?>
+
+									<?php echo $__env->make('alerts.alerts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+
+
+									<div class="form-group">
+										<label for="title"><?php echo e(__('Title')); ?> *</label>
+										<input type="text" name="title" class="form-control" id="title"
+											placeholder="<?php echo e(__('Enter Title')); ?>" value="<?php echo e(old('title')); ?>" required>
+									</div>
+
+									<div class="form-group">
+										<label for="category_id"><?php echo e(__('Select Category')); ?> *</label>
+										<select name="category_id" id="category_id" class="form-control" required>
+											<option value="" selected disabled><?php echo e(__('Select Category')); ?></option>
+											<?php $__currentLoopData = DB::table('fcategories')->whereStatus(1)->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+											<option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
+											<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+										</select>
+									</div>
+
+									<div class="form-group">
+										<label for="details"><?php echo e(__('Details')); ?> *</label>
+										<textarea name="details" id="details" class="form-control" rows="5"
+											placeholder="<?php echo e(__('Enter Details')); ?>"
+											required><?php echo e(old('details')); ?></textarea>
+									</div>
+
+
+
+								<div class="form-group text-center">
+										<button type="submit"
+											class="btn btn-secondary "><?php echo e(__('Submit')); ?></button>
+									</div>
+
+									<div>
+								</form>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('master.back', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/u384171748/domains/block55.in/public_html/core/resources/views/back/faq/create.blade.php ENDPATH**/ ?>

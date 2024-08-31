@@ -1,5 +1,5 @@
 @import url(paymentfont.min.css);
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 .site-header .site-menu>ul>li .sub-menu,
 .toolbar-dropdown {
@@ -21,7 +21,7 @@
 
 .main-view {
     background-color: #000 !important;
-    padding-top: 30px;
+    padding-top: 0px;
     margin-top: 0px;
     border-bottom: 2px solid #fff;
 
@@ -29,7 +29,7 @@
 .main-view h2,h1,h3,h4,h5,h6,p
 {
     margin: 0;
-    color: #fff;
+    color: #b9afa8;
     text-transform: none;
 }
 /* .main-view span,small{
@@ -372,11 +372,11 @@ html * {
 
 body {
     background-position: center;
-    background-color: #f3f5f6;
+    background-color: #000;
     background-repeat: no-repeat;
     background-size: cover;
     color: #505050;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 15px;
     font-weight: 400;
     line-height: 1.5;
@@ -1832,7 +1832,7 @@ kbd {
 .form-control {
     padding: 0 18px;
     transition: color .25s, background-color .25s, border-color .25s;
-    border: 1px solid #e0e0e0;
+    border: 0px solid #e0e0e0;
     border-radius: 5px;
     background-color: #fff;
     color: #505050;
@@ -1904,7 +1904,8 @@ select.form-control:not([size]):not([multiple]) {
     padding-left: 1px;
     font-size: 12px;
     font-weight: 500;
-    cursor: pointer
+    cursor: pointer;
+    text-transform: uppercase;
 }
 
 .form-group label.col-form-label {
@@ -2334,14 +2335,14 @@ select.form-control.input-light option {
 .table th,
 .table thead th {
     border-color: #e5e5e5;
-    color: #000;
+    color: #fff;
 
 }
 
 .table th,
 .table thead th {
     font-weight: 500;
-    color: #000;
+    color: #fff;
 }
 
 .table.table-inverse {
@@ -2972,7 +2973,7 @@ button:focus {
     margin-right: 18px;
     margin-bottom: 5px;
     transition: color .3s;
-    color: #505050;
+    color: #959595;
     font-size: 12px;
     text-decoration: none;
     vertical-align: middle
@@ -3362,7 +3363,7 @@ button:focus {
     padding: 30px;
     overflow: hidden;
     border-radius: 6px;
-    background: #fff
+    background: #000
 }
 
 .tab-content ol:last-child,
@@ -4229,7 +4230,7 @@ a.list-group-item {
 a.list-group-item:active,
 a.list-group-item:focus,
 a.list-group-item:hover {
-    background-color: #fff;
+    background-color: #b9afa8;
     color: #377dff
 }
 
@@ -5196,7 +5197,7 @@ a.alert {
     transition: opacity .3s;
     border: 1px solid #e5e5e5;
     border-radius: 5px;
-    background-color: #fff;
+    background-color: #b9afa8;
     color: #232323;
     line-height: 44px;
     text-align: center;
@@ -5322,10 +5323,10 @@ a.alert {
 
 .hero-slider .item {
     overflow: hidden;
-    height: 440px;
+    height: 520px;
     display: flex;
     align-items: center;
-    padding: 0 60px;
+    padding: 0 0px;
     background-size: cover !important;
     background-repeat: no-repeat !important;
     background-position: center !important
@@ -5706,9 +5707,7 @@ video {
         left: -46px
     }
 
-    .site-header .topbar {
-        border-bottom: 0 !important
-    }
+    
 }
 
 .widget-title {
@@ -6345,7 +6344,7 @@ video {
     font-size: 13px;
 }
 
-..widget-light-skin .widget-title {
+.widget-light-skin .widget-title {
     border-color: rgba(255, 255, 255, .13);
     color: #fff;
 }
@@ -7063,10 +7062,10 @@ video {
 
 .site-header .toolbar .toolbar-item>a>div i {
     display: inline-block;
-    margin-bottom: 6px;
+    margin-bottom: 0px;
     font-size: 20px;
-    color:#fff !important;
-
+    color:#b9afa8 !important;
+    margin-top: 5px;
 }
 
 .site-header .toolbar .toolbar-item>a>div>.text-label {
@@ -7093,7 +7092,7 @@ video {
     height: 18px;
     border-radius: 50%;
     background-color: #377dff;
-    color: #fff;
+    color:#b9afa8;
     font-size: 11px;
     line-height: 18px
 }
@@ -7321,7 +7320,7 @@ video {
     width: 300px;
     height: 100%;
     overflow-y: auto;
-    background-color: #fff;
+    background-color: #000;
     z-index: 999999;
     box-shadow: 0 7px 30px -6px rgba(0, 0, 0, .15)
 }
@@ -7357,16 +7356,17 @@ video {
 
 .mobile-menu .nav-tabs li span {
     width: 100%;
-    background: #f5f6f9;
+    background: #000;
     display: block;
     font-size: 15px;
     font-weight: 400;
     padding: 5px 0;
-    cursor: pointer
+    cursor: pointer;
+    color: #959595;
 }
 
 .mobile-menu .nav-tabs li span.active {
-    background: #fff
+    background: #2c2c2c;
 }
 
 @media (max-width:991px) {
@@ -7504,7 +7504,7 @@ video {
     }
 
     .breadcrumbs {
-        padding-top: 15px;
+        padding-top: 0px;
         text-align: center
     }
 
@@ -7537,7 +7537,7 @@ video {
 }
 
 .site-footer {
-    padding-top: 56px;
+    padding-top: 30px;
     background-position: center bottom;
     background-color: #000;
     background-repeat: no-repeat
@@ -7665,8 +7665,9 @@ video {
 }
 
 .user-info-wrapper .user-info .user-avatar>img {
-    border: 5px solid #fff;
+    border: 5px solid #b9afa8;
     border-radius: 50%;
+    background-color: #b9afa8;
     width: 100px;
     height: 100px;
     display: block;
@@ -7737,6 +7738,7 @@ video {
 
 .product-card .product-card-body {
     padding: 15px 15px 10px;
+    background-color:#111111;
 }
 
 .product-card .product-thumb {
@@ -7793,6 +7795,11 @@ video {
     display: block;
     font-weight: 500;
     line-height: 18px;
+}
+@media (max-width:500px){
+    .product-card .product-title>a {
+        height:auto !important;
+    }
 }
 
 .product-card .product-title>a:hover {
@@ -8256,7 +8263,7 @@ video {
 .shopping-cart .product-item .product-title>a,
 .wishlist-table .product-item .product-title>a {
     transition: color .3s;
-    color: #232323;
+    color: #aeaeae;
     line-height: 1.5;
     text-decoration: none
 }
@@ -8342,7 +8349,7 @@ video {
 
 .product-gallery {
     position: relative;
-    border-radius: 10px;
+    border-radius: 0px;
     background: #fff;
     padding-bottom: 1px;
     overflow: hidden;
@@ -8796,13 +8803,11 @@ screen and (-ms-high-contrast:none) {
     position: absolute;
     left: 0;
     top: 100%;
-    margin-top: ;
     width: 100%;
     border-radius: 5px;
     background: #fff;
     opacity: 0;
     visibility: hidden;
-    box-shadow: ;
 }
 
 .left-category-area .category-list.active {
@@ -8956,7 +8961,7 @@ screen and (-ms-high-contrast:none) {
 .section-title h2 {
     padding-bottom: 12px;
     margin-bottom: 0;
-    font-weight: 600;
+    font-weight: 800;
     font-size: 24px;
     position: relative
 }
@@ -9252,7 +9257,7 @@ screen and (-ms-high-contrast:none) {
 }
 
 .popular-category-slider.owl-carousel .owl-nav div.disabled {
-    background: #f5f6f9
+    background: #b9afa8
 }
 
 .bestseller-slider.owl-carousel .owl-nav div:hover,
@@ -9765,7 +9770,7 @@ screen and (-ms-high-contrast:none) {
 
 .table>:not(:last-child)>:last-child>* {
     border-bottom-color: #000 !important;
-    color: #000;
+    color: #fff;
     
 }
 
@@ -9783,10 +9788,10 @@ screen and (-ms-high-contrast:none) {
 
 .payment-methods .single-payment-method a {
     display: block;
-    border: 1px solid #f5f5f5;
+    border: 0px solid #303030;
     padding: 20px 10px;
     text-align: center;
-    background: #f5f6f9
+    background: #303030;
 }
 
 .payment-methods .single-payment-method a img {
@@ -9835,10 +9840,10 @@ screen and (-ms-high-contrast:none) {
 }
 
 #accordion1 .card-header a {
-    background: #fff;
+    background:#959595;
     padding: 14px 20px;
     display: block;
-    color: #333;
+    color: #3f3f3f;
     width: 100%
 }
 
@@ -10331,14 +10336,14 @@ screen and (-ms-high-contrast:none) {
     margin-right: 20px;
     height: 46px;
     line-height: 45px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #2c2c2c;
     border-radius: 5px;
     background-color: #fff;
     color: #505050;
     font-size: 14px;
     text-align: center;
     margin-bottom: 0;
-    font-weight: 400;
+    font-weight: 600;
     -webkit-transition: all .3s linear;
     -moz-transition: all .3s linear;
     transition: all .3s linear
@@ -10768,7 +10773,7 @@ screen and (-ms-high-contrast:none) {
     margin-bottom: 1.6rem;
 }
 .form-control{
-    width: 65%;
+    width: 100%;
     height: 50px;
     display: flex;
     padding-bottom: 0px;
@@ -11028,5 +11033,178 @@ h2{
   @font-face {
     font-family: 'CONSOLA';
     src: url('/fonts/CONSOLA.ttf') format('truetype');
-    /* Include additional variations (bold, italic, etc.) if needed */
+   /* // Include additional variations (bold, italic, etc.) if needed */
   }
+  
+  .b2b_title{
+    border-bottom: 2px solid #2c2c2c;
+  }
+  .b2b_title h2{
+        color: #4d4d4d !important;
+        text-align: left;
+        padding-left: 24px;
+        font-size: 45px;
+        letter-spacing: 0px !important;
+        font-family: "Poppins";
+        font-weight: 800 !important;
+  }
+  .side-margin{
+    border-right:2px solid #2c2c2c;
+    border-left:2px solid #2c2c2c;
+  }
+  .img-cent{
+    justify-content: center;
+    display: flex;
+  }
+  .content-padd{
+    padding-top: 50px;
+  }
+  .b2b_welcome{
+    text-align: left;
+    font-size: 20px;
+    font-weight: 500;
+    color:red;
+    font-family: "Poppins";
+  }
+  .log-text-b2b{
+    font-size: 35px !important;
+  }
+  .b2b-log-btn{
+    padding: 10px 70px;
+  }
+  .b2b-log-forgot{
+    padding-top: 40px;
+    text-transform: uppercase;
+    color: #4d4d4d;
+  }
+  .b2b-general{
+    font-size: 36px;
+    color: #4d4d4d;
+  }
+  .b2b-general-p{
+    font-size: 21px;
+    color: #4d4d4d;
+    line-height: 1.5em;
+    font-weight: 300 !important;
+  }
+  .b2b-attent{
+    font-size: 20px;
+    padding: 40px 10px;
+    background-color: #242424;
+    color: #4d4d4d;
+  }
+  .side-full-margin{
+    border:2px solid #2c2c2c;
+  }
+  .phase-margin{
+    border-top:2px solid #2c2c2c;
+    border-bottom: 2px solid #2c2c2c;
+  }
+  .topic-left{
+    text-align: left;
+    color: #4d4d4d !important;
+    font-size: 40px;
+    font-weight:600;
+  }
+  .topic-right{
+    text-align: right;
+    color: #4d4d4d !important;
+    font-size: 40px;
+    font-weight:600;
+  }
+  .metro-topic{
+    font-size: 65px;
+    color: #4d4d4d !important;
+    text-align: center;
+  }
+  .b2b-new{
+    font-size: 16px;
+    color: #4d4d4d !important;
+    text-align: left;
+    padding-left: 24px;
+  }
+  .b2b-metro{
+    font-size: 16px;
+    color: #4d4d4d !important;
+    text-align: right;
+  }
+  .px-sm-3{
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  .vault-title-left{
+    color: #4d4d4d !important;
+    text-align: left;
+    padding-left: 24px;
+    font-size: 60px;
+    letter-spacing: 0px !important;
+    font-family: "Poppins";
+    font-weight: 800 !important;
+  }
+  .vault-title-right{
+    color: #4d4d4d !important;
+    text-align: right;
+    padding-left: 24px;
+    font-size: 60px;
+    letter-spacing: 0px !important;
+    font-family: "Poppins";
+    font-weight: 800 !important;
+  }
+  .vault-title{
+    border-bottom: 2px solid #2c2c2c;
+  }
+  .vault_welcome{
+    text-align: left;
+    font-size: 25px;
+    font-weight: 500;
+    color:red;
+    font-family: "Poppins";
+  }
+  .vault-general{
+    font-size: 36px;
+    color: #4d4d4d !important;
+  }
+  .vault-general-p{
+    font-size: 21px;
+    color: #4d4d4d !important;
+    line-height: 1.5em;
+    font-weight: 300 !important;
+  }
+  .vault-only {
+    font-size: 40px;
+    margin: 0;
+    font-weight: 300 !important;
+    color: #4d4d4d !important;
+   }
+   .vault-note{
+    font-size: 25px;
+    font-weight: 300 !important;
+    color: #4d4d4d !important;
+   }
+   .vault-log-btn{
+    padding: 30px 70px;
+    width: 100%;
+    font-size: 50px;   
+    }
+    .padd-foot{
+        padding-left:1px !important;
+        padding-right:13px !important;
+    }
+    @media (max-width:1400px){
+        .hero-slider .item {
+            height: 466px;
+        }
+        .logos-slide span {
+            font-size: 46px !important;
+        }
+    }
+    @media (max-width:520px){
+        .padd-foot{
+        padding-left:5px !important;
+        padding-right:5px !important;
+    }
+    }
+.px-0{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}

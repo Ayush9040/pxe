@@ -5,29 +5,29 @@
 @section('content')
 
 <!-- Page Title-->
-<div class="page-title">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <ul class="breadcrumbs">
-                    <li><a href="{{__('front.index')}}">{{__('Home')}}</a> </li>
-                    <li class="separator"></li>
-                    <li>{{__('Tickets')}} </li>
-                  </ul>
-            </div>
-        </div>
-    </div>
-  </div>
+<!--<div class="page-title">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-12">-->
+<!--                <ul class="breadcrumbs">-->
+<!--                    <li><a href="{{__('front.index')}}">{{__('Home')}}</a> </li>-->
+<!--                    <li class="separator"></li>-->
+<!--                    <li>{{__('Tickets')}} </li>-->
+<!--                  </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--  </div>-->
   <!-- Page Content-->
-<div class="container padding-bottom-3x mb-1">
+<div class="container padding-bottom-3x mb-1 my-3">
   <div class="row">
          @include('includes.user_sitebar')
           <div class="col-lg-8">
                 <div class="mb-3">
                     <div class="card">
                         <div class="card-body d-flex flex-row justify-content-between align-items-center">
-                            <h5 class="mb-0">{{ __('All Tickets') }}</h5>
-                            <a href="{{ route('user.ticket.create') }}" class="btn btn-primary btn-sm"><span>{{__('Add New')}}</span></a>
+                            <h5 class="mb-0 uppercase" style="color:#aeaeae;">{{ __('All Tickets') }}</h5>
+                            <a href="{{ route('user.ticket.create') }}" class="btn btn-primary btn-sm uppercase"><span>{{__('Add New')}}</span></a>
                         </div>
                     </div>
                 </div>
@@ -37,10 +37,10 @@
                             <table class="table table-bordered mb-0">
                                 <thead>
                                 <tr>
-                                    <th>{{__('Subject')}} #</th>
-                                    <th>{{__('Status')}}</th>
-                                    <th>{{__('Last Reply')}}</th>
-                                    <th>{{__('Action')}}</th>
+                                    <th class="uppercase">{{__('Subject')}} #</th>
+                                    <th class="uppercase">{{__('Status')}}</th>
+                                    <th class="uppercase">{{__('Last Reply')}}</th>
+                                    <th class="uppercase">{{__('Action')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -48,7 +48,7 @@
                                 <tr>
                                     <td>{{$ticket->subject}}</td>
                                     <td>
-                                        <span class="badge badge-primary">{{$ticket->status}}</span>
+                                        <span class="badge badge-primary uppercase">{{$ticket->status}}</span>
                                     </td>
                                     @if ($ticket->lastMessage)
                                     <td>{{ \Carbon\Carbon::parse($ticket->lastMessage->created_at)->diffForHumans() }}</td>
@@ -56,16 +56,16 @@
                                     <td> {{__('No Reply')}}</td>
                                     @endif
                                     <td>
-                                        <a class="btn btn-info btn-sm" href="{{ route('user.ticket.view',$ticket->id) }}">
+                                        <a class="btn btn-info btn-sm uppercase" href="{{ route('user.ticket.view',$ticket->id) }}">
                                             <i class="fas fa-eye"> </i> {{__('View')}}
                                         </a>
-                                        <a class="btn btn-sm btn-danger" href="{{ route('user.ticket.delete',$ticket->id) }}">
+                                        <a class="btn btn-sm btn-danger uppercase" href="{{ route('user.ticket.delete',$ticket->id) }}">
                                             <i class="fas fa-trash"> </i> {{__('Delete')}}
                                         </a>
                                     </td>
                                 </tr>
                                 @empty
-                                    <tr class="text-center">
+                                    <tr class="text-center uppercase">
                                         <td colspan="4">{{__('Ticket Not Found')}}</td>
                                     </tr>
                                 @endforelse

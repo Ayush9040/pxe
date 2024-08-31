@@ -4,25 +4,25 @@
 @endsection
 
 @section('content')
-<div class="page-title">
-    <div class="container">
-      <div class="row">
-          <div class="col-lg-12">
-            <ul class="breadcrumbs">
-                <li><a href="{{route('front.index')}}">{{__('Home')}}</a>
-                </li>
-                <li class="separator"></li>
-                <li><a href="{{route('front.blog')}}">{{__('Blog')}}</a>
-                </li>
-                <li class="separator"></li>
-                <li>{{$post->title}}</li>
-              </ul>
-          </div>
-      </div>
-    </div>
-  </div>
+<!--<div class="page-title">-->
+<!--    <div class="container">-->
+<!--      <div class="row">-->
+<!--          <div class="col-lg-12">-->
+<!--            <ul class="breadcrumbs">-->
+<!--                <li><a href="{{route('front.index')}}">{{__('Home')}}</a>-->
+<!--                </li>-->
+<!--                <li class="separator"></li>-->
+<!--                <li><a href="{{route('front.blog')}}">{{__('Blog')}}</a>-->
+<!--                </li>-->
+<!--                <li class="separator"></li>-->
+<!--                <li>{{$post->title}}</li>-->
+<!--              </ul>-->
+<!--          </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
   <!-- Page Content-->
-  <div class="container padding-bottom-3x mb-1">
+  <div class="container padding-bottom-3x mb-1 my-3">
   <div class="row">
           <!-- Content-->
           <div class="col-xl-9 col-lg-8 order-lg-2">

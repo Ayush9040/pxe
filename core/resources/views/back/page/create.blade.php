@@ -46,7 +46,7 @@
 
 									<div class="form-group">
 										<label for="details">{{ __('Details') }} *</label>
-										<textarea name="details" id="details" class="form-control text-editor" rows="5"
+										<textarea name="details" id="details" class="form-control" rows="5"
 											placeholder="{{ __('Enter Details') }}"
 											required>{{ old('details') }}</textarea>
 									</div>

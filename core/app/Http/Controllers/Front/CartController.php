@@ -41,11 +41,20 @@ class CartController extends Controller
 
     public function addToCart(Request $request)
     {
-        
-        $msg = $this->repository->store($request);
+
+        // if (auth()->check()) {
+            // User is logged in, allow adding to cart
+            // Your logic for adding to cart goes here
+            $msg = $this->repository->store($request);
         if($request->ajax()){
             return response()->json(['message' => $msg , 'qty' => count(Session::get('cart'))]);
         }
+        // } else {
+            // User is not logged in, redirect to login page
+            // return redirect()->route('front.cart')->with('message', 'Please log in to add items to your cart');;
+        // }
+        
+        
         
         
     }

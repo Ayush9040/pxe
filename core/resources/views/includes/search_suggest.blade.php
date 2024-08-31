@@ -24,13 +24,13 @@ function renderStarRating($rating, $maxRating = 5)
         <a class="product-thumb" href="{{route('front.product',$item->slug)}}">
             <img class="lazy" alt="Product" src="{{asset('assets/images/'.$item->thumbnail)}}" style=""></a>
         <div class="product-card-body">
-            <h3 class="product-title"><a href="{{route('front.product',$item->slug)}}">
+            <h3 class="product-title uppercase"><a href="{{route('front.product',$item->slug)}}">
                 {{ strlen(strip_tags($item->name)) > 35 ? substr(strip_tags($item->name), 0, 35) : strip_tags($item->name) }}
             </a></h3>
-            <div class="rating-stars">
+            <div class="rating-stars uppercase">
                 {!! renderStarRating($item->reviews->avg('rating')) !!}
             </div>
-            <h4 class="product-price">
+            <h4 class="product-price uppercase">
                 {{PriceHelper::grandCurrencyPrice($item)}}
             </h4>
         </div>
@@ -39,5 +39,5 @@ function renderStarRating($rating, $maxRating = 5)
     
 </div>
 <div class="bottom-area">
-    <a id="view_all_search_" href="javascript:;">{{ __('View all result') }}</a>
+    <a id="view_all_search_" href="javascript:;" class="uppercase">{{ __('View all result') }}</a>
 </div>

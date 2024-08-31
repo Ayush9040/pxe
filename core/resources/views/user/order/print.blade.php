@@ -35,8 +35,8 @@
   <div class="card card-body p-5">
               <div class="row">
                   <div class="col-lg-12">
-                      <a href="{{route('user.order.index')}}" class="btn btn-sm btn-primary d-inline-block"><span>{{__('Back')}}</span></a>
-                      <a href="{{route('user.order.print',$order->id)}}" target="_blank" class="btn btn-sm btn-primary invoice_price d-inline-block"><span>{{__('Print')}}</span></a>
+                      <a href="{{route('user.order.index')}}" class="btn btn-sm btn-primary d-inline-block uppercase"><span>{{__('Back')}}</span></a>
+                      <a href="{{route('user.order.print',$order->id)}}" target="_blank" class="btn btn-sm btn-primary uppercase invoice_price d-inline-block"><span>{{__('Print')}}</span></a>
                   </div>
               </div> <!-- / .row -->
               <div class="row">
@@ -49,23 +49,23 @@
               </div> <!-- / .row -->
               <div class="row">
                 <div class="col-12">
-                    <h5><b>{{__('Order Details :')}}</b></h5>
+                    <h5 class="uppercase"><b>{{__('Order Details :')}}</b></h5>
 
-                    <span class="text-muted">{{__('Transaction Id :')}}</span>{{$order->txnid}}<br>
-                    <span class="text-muted">{{__('Order Id :')}}</span>{{$order->transaction_number}}<br>
-                    <span class="text-muted">{{__('Order Date :')}}</span>{{$order->created_at->format('M d, Y')}}<br>
-                    <span class="text-muted">{{__('Payment Status :')}}</span>
+                    <span class="text-muted uppercase">{{__('Transaction Id :')}}</span>{{$order->txnid}}<br>
+                    <span class="text-muted uppercase">{{__('Order Id :')}}</span>{{$order->transaction_number}}<br>
+                    <span class="text-muted uppercase">{{__('Order Date :')}}</span>{{$order->created_at->format('M d, Y')}}<br>
+                    <span class="text-muted uppercase">{{__('Payment Status :')}}</span>
                     @if($order->payment_status == 'Paid')
-                    <div class="badge badge-success">
+                    <div class="badge badge-success uppercase">
                         {{__('Paid')}}
                     </div>
                     @else
-                    <div class="badge badge-danger">
+                    <div class="badge badge-danger uppercase">
                         {{__('Unpaid')}}
                         </div>
                     @endif
                     <br>
-                    <span class="text-muted">{{__('Payment Method :')}}</span>{{$order->payment_method }}<br>
+                    <span class="text-muted uppercase">{{__('Payment Method :')}}</span>{{$order->payment_method }}<br>
 
                     <br>
                     <br>
@@ -73,61 +73,61 @@
             </div>
             <div class="row">
                 <div class="col-12 col-md-6">
-                      <h5>{{__('Billing Address :')}}</h5>
+                      <h5 class="uppercase">{{__('Billing Address :')}}</h5>
                           @php
                               $bill = json_decode($order->billing_info,true);
 
                           @endphp
 
-                          <span class="text-muted">{{__('Name')}}: </span>{{$bill['bill_first_name']}} {{$bill['bill_last_name']}}<br>
-                          <span class="text-muted">{{__('Email')}}: </span>{{$bill['bill_email']}}<br>
-                          <span class="text-muted">{{__('Phone')}}: </span>{{$bill['bill_phone']}}<br>
+                          <span class="text-muted uppercase">{{__('Name')}}: </span>{{$bill['bill_first_name']}} {{$bill['bill_last_name']}}<br>
+                          <span class="text-muted uppercase">{{__('Email')}}: </span>{{$bill['bill_email']}}<br>
+                          <span class="text-muted uppercase">{{__('Phone')}}: </span>{{$bill['bill_phone']}}<br>
                           @if (isset($bill['bill_address1']))
-                          <span class="text-muted">{{__('Address')}}: </span>{{$bill['bill_address1']}}, {{isset($bill['bill_address2']) ? $bill['bill_address2'] : ''}}<br>
+                          <span class="text-muted uppercase">{{__('Address')}}: </span>{{$bill['bill_address1']}}, {{isset($bill['bill_address2']) ? $bill['bill_address2'] : ''}}<br>
                           @endif
                           @if (isset($bill['bill_country']))
-                          <span class="text-muted">{{__('Country')}}: </span>{{$bill['bill_country']}}<br>
+                          <span class="text-muted uppercase">{{__('Country')}}: </span>{{$bill['bill_country']}}<br>
                           @endif
                           @if (isset($bill['bill_city']))
-                          <span class="text-muted">{{__('City')}}: </span>{{$bill['bill_city']}}<br>
+                          <span class="text-muted uppercase">{{__('City')}}: </span>{{$bill['bill_city']}}<br>
                           @endif
                           @if (isset($state['name']))
-                          <span class="text-muted">{{__('State')}}: </span>{{$state['name']}}<br>
+                          <span class="text-muted uppercase">{{__('State')}}: </span>{{$state['name']}}<br>
                           @endif
                           @if (isset($bill['bill_zip']))
-                          <span class="text-muted">{{__('Zip')}}: </span>{{$bill['bill_zip']}}<br>
+                          <span class="text-muted uppercase">{{__('Zip')}}: </span>{{$bill['bill_zip']}}<br>
                           @endif
                           @if (isset($bill['bill_company']))
-                          <span class="text-muted">{{__('Company')}}: </span>{{$bill['bill_company']}}<br>
+                          <span class="text-muted uppercase">{{__('Company')}}: </span>{{$bill['bill_company']}}<br>
                           @endif
 
 
                 </div>
                 <div class="col-12 col-md-6">
-                  <h5>{{__('Shipping Address :')}}</h5>
+                  <h5 class="uppercase">{{__('Shipping Address :')}}</h5>
                       @php
                           $ship = json_decode($order->shipping_info,true)
                       @endphp
-                          <span class="text-muted">{{__('Name')}}: </span>{{$ship['ship_first_name']}} {{$ship['ship_last_name']}} <br>
-                          <span class="text-muted">{{__('Email')}}: </span>{{$ship['ship_email']}}<br>
-                          <span class="text-muted">{{__('Phone')}}: </span>{{$ship['ship_phone']}}<br>
+                          <span class="text-muted uppercase">{{__('Name')}}: </span>{{$ship['ship_first_name']}} {{$ship['ship_last_name']}} <br>
+                          <span class="text-muted uppercase">{{__('Email')}}: </span>{{$ship['ship_email']}}<br>
+                          <span class="text-muted uppercase">{{__('Phone')}}: </span>{{$ship['ship_phone']}}<br>
                           @if (isset($ship['ship_address1']))
-                          <span class="text-muted">{{__('Address')}}: </span>{{$ship['ship_address1']}}, {{isset($ship['ship_address2']) ? $ship['ship_address2'] : ''}}<br>
+                          <span class="text-muted uppercase">{{__('Address')}}: </span>{{$ship['ship_address1']}}, {{isset($ship['ship_address2']) ? $ship['ship_address2'] : ''}}<br>
                           @endif
                           @if (isset($ship['ship_country']))
-                          <span class="text-muted">{{__('Country')}}: </span>{{$ship['ship_country']}}<br>
+                          <span class="text-muted uppercase">{{__('Country')}}: </span>{{$ship['ship_country']}}<br>
                           @endif
                           @if (isset($ship['ship_city']))
-                          <span class="text-muted">{{__('City')}}: </span>{{$ship['ship_city']}}<br>
+                          <span class="text-muted uppercase">{{__('City')}}: </span>{{$ship['ship_city']}}<br>
                           @endif
                           @if (isset($state['name']))
-                          <span class="text-muted">{{__('State')}}: </span>{{$state['name']}}<br>
+                          <span class="text-muted uppercase">{{__('State')}}: </span>{{$state['name']}}<br>
                           @endif
                           @if (isset($ship['ship_zip']))
-                          <span class="text-muted">{{__('Zip')}}: </span>{{$ship['ship_zip']}}<br>
+                          <span class="text-muted uppercase">{{__('Zip')}}: </span>{{$ship['ship_zip']}}<br>
                           @endif
                           @if (isset($ship['ship_company']))
-                          <span class="text-muted">{{__('Company')}}: </span>{{$ship['ship_company']}}<br>
+                          <span class="text-muted uppercase">{{__('Company')}}: </span>{{$ship['ship_company']}}<br>
                           @endif
 
                 </div>
@@ -141,16 +141,16 @@
                     <thead>
                         <tr>
                         <th width="50%" class="px-0 bg-transparent border-top-0">
-                            <span class="h6">{{__('Products')}}</span>
+                            <span class="h6 uppercase">{{__('Products')}}</span>
                         </th>
                         <th class="px-0 bg-transparent border-top-0">
-                            <span class="h6">{{__('Attribute')}}</span>
+                            <span class="h6 uppercase">{{__('Attribute')}}</span>
                         </th>
                         <th class="px-0 bg-transparent border-top-0">
-                            <span class="h6">{{__('Quantity')}}</span>
+                            <span class="h6 uppercase">{{__('Quantity')}}</span>
                         </th>
                         <th class="px-0 bg-transparent border-top-0 text-right">
-                            <span class="h6">{{__('Price')}}</span>
+                            <span class="h6 uppercase">{{__('Price')}}</span>
                         </th>
                         </tr>
                     </thead>
@@ -166,13 +166,13 @@
                         $grandSubtotal = $total + $option_price;
                     @endphp
                     <tr>
-                        <td class="px-0">
+                        <td class="px-0 uppercase">
                             {{$item['name']}}
                         </td>
-                        <td class="px-0">
+                        <td class="px-0 uppercase">
                             @if($item['attribute']['option_name'])
                             @foreach ($item['attribute']['option_name'] as $optionkey => $option_name)
-                            <span class="entry-meta"><b>{{$option_name}}</b> :
+                            <span class="entry-meta uppercase"><b>{{$option_name}}</b> :
                                 @if ($setting->currency_direction == 1)
                                 {{$order->currency_sign}}{{round($item['attribute']['option_price'][$optionkey]*$order->currency_value,2)}}
                                 @else
@@ -189,7 +189,7 @@
                             {{$item['qty']}}
                         </td>
 
-                        <td class="px-0 text-right">
+                        <td class="px-0 text-right ">
                             @if ($setting->currency_direction == 1)
                                 {{$order->currency_sign}}{{round($item['main_price']*$order->currency_value,2)}}
                             @else
@@ -205,10 +205,10 @@
                         @if($order->tax!=0)
                         <tr>
                         <td class="px-0 border-top border-top-2">
-                        <span class="text-muted">{{__('Tax')}}</span>
+                        <span class="text-muted uppercase">{{__('Tax')}}</span>
                         </td>
                         <td class="px-0 text-right border-top border-top-2" colspan="5">
-                            <span>
+                            <span class="uppercase">
                             @if ($setting->currency_direction == 1)
                                 {{$order->currency_sign}}{{round($order->tax*$order->currency_value,2)}}
                             @else
@@ -224,10 +224,10 @@
                         @endphp
                         <tr>
                         <td class="px-0 border-top border-top-2">
-                        <span class="text-muted">{{__('Coupon discount')}} ({{$discount['code']['code_name']}})</span>
+                        <span class="text-muted uppercase">{{__('Coupon discount')}} ({{$discount['code']['code_name']}})</span>
                         </td>
                         <td class="px-0 text-right border-top border-top-2" colspan="5">
-                            <span class="text-danger">
+                            <span class="text-danger uppercase">
                             @if ($setting->currency_direction == 1)
                                 -{{$order->currency_sign}}{{round($discount['discount'] * $order->currency_value,2)}}
                             @else
@@ -243,10 +243,10 @@
                         @endphp
                         <tr>
                         <td class="px-0 border-top border-top-2">
-                        <span class="text-muted">{{__('Shipping')}}</span>
+                        <span class="text-muted uppercase">{{__('Shipping')}}</span>
                         </td>
                         <td class="px-0 text-right border-top border-top-2" colspan="5">
-                            <span >
+                            <span class="uppercase">
                             @if ($setting->currency_direction == 1)
                                 {{$order->currency_sign}}{{round($shipping['price']*$order->currency_value,2)}}
                             @else
@@ -260,9 +260,9 @@
                         @if(json_decode($order->state_price,true))
                         <tr>
                         <td class="px-0 border-top border-top-2">
-                        <span class="text-muted">{{__('State Tax')}}</span>
+                        <span class="text-muted uppercase">{{__('State Tax')}}</span>
                         </td>
-                        <td class="px-0 text-right border-top border-top-2" colspan="5">
+                        <td class="px-0 text-right border-top border-top-2 uppercase" colspan="5">
                             <span >
                             @if ($setting->currency_direction == 1)
                             {{isset($state['type']) && $state['type'] == 'percentage' ?  ' ('.$state['price'].'%) ' : ''}}  {{$order->currency_sign}}{{round($order['state_price']*$order->currency_value,2)}}
@@ -275,7 +275,7 @@
                         </tr>
                         @endif
                         <tr>
-                        <td class="px-0 border-top border-top-2">
+                        <td class="px-0 border-top border-top-2 uppercase">
 
                         @if ($order->payment_method == 'Cash On Delivery')
                         <strong>{{__('Total amount')}}</strong>
@@ -283,8 +283,9 @@
                         <strong>{{__('Total amount due')}}</strong>
                         @endif
                         </td>
-                        <td class="px-0 text-right border-top border-top-2" colspan="5">
-                            <span class="h3">
+                        <td class="px-0 text-right border-top border-top-2 " colspan="5">
+                        <td class="px-0 text-right border-top border-top-2 uppercase" colspan="5">
+                            <span class="h3 uppercase">
                                 @if ($setting->currency_direction == 1)
                                 {{$order->currency_sign}}{{PriceHelper::OrderTotal($order)}}
                                 @else

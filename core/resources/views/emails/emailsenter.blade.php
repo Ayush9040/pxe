@@ -29,6 +29,9 @@
         p {
             font-size: 16px;
         }
+            /* .ii a[href] {
+        color: #fff;
+    } */
 
         .btn {
             background-color:#ff0000;
@@ -55,10 +58,10 @@
                     <h1>Welcome to Block55 Underground</h1>
                     <p>Dear {{$data['name']}},</p>
                     <p>Welcome to the electrifying community of block55 underground, we are thrilled to have you on board, get ready to explore the future of metropolis aesthetics with our conceptual clothing.</p>
-                    <p>Block55 is built on the foundations of reflecting the responsibility to keep refreshing the current status of our society through knowledge sharing and creative experiments by breaking the bounds of conventionality and keep pushing the fashion envelope.</p>
-                    <p>Join us in shaping the underground aesthetics of tomorrow. You can also take time to dive into our virtual hangouts ( Watsapp ), digital write ups ( blogs ), E-Pub ( discord ) and discover exclusive perks through the keys access granted to you. Together let's redefine the new age metropolis underground streetwear.</p>
+                    <p>Block55 is built on the foundation of reflecting the responsibility to keep refreshing the current status of our society through knowledge sharing and creative experiments by breaking the bound of conventionality and keep pushing the fashion envelope.</p>
+                    <p>Join us in shaping the underground aesthetics of tomorrow. You can also take time to dive into our virtual hangouts ( Whatsapp ), digital write ups ( blogs ), E-Pub ( discord ) and discover exclusive perks through the keys access granted to you. Together let's redefine the new age metropolis underground streetwear.</p>
                     <p>Cheers to a connected future!</p>
-                    <a href="https://block55.in/" class="btn" style="font-weight: 600;">Explore Now</a>
+                    <a href="https://block55.in/" class="btn" style="font-weight: 600; color:#fff !important;">Explore Now</a>
                 </div>
             </div>
         </div>

@@ -22,6 +22,7 @@ class PostRepository
     {
         $input = $request->all();
         $input['slug'] = Str::slug($request->title);
+        // $input['details'] = Str::slug($request->details);
         if($request->has('tags')){
             $input['tags'] = str_replace(["value", "{", "}", "[","]",":","\""], '', $request->tags);
         }

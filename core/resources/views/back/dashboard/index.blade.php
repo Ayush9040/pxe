@@ -39,7 +39,7 @@
             <div class="card-body ">
                 <div class="row align-items-center">
                     <div class="col-icon">
-                        <div class="icon-big text-center icon-success bubble-shadow-small">
+                        <div class="icon-big text-center icon-black bubble-shadow-small">
                             <i class="fas fa-shopping-cart"></i>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
             <div class="card-body ">
                 <div class="row align-items-center">
                     <div class="col-icon">
-                        <div class="icon-big text-center icon-success bubble-shadow-small">
+                        <div class="icon-big text-center icon-black bubble-shadow-small">
                             <i class="fas fa-shopping-cart"></i>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
             <div class="card-body ">
                 <div class="row align-items-center">
                     <div class="col-icon">
-                        <div class="icon-big text-center icon-success bubble-shadow-small">
+                        <div class="icon-big text-center icon-black bubble-shadow-small">
                             <i class="fas fa-shopping-cart"></i>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
             <div class="card-body ">
                 <div class="row align-items-center">
                     <div class="col-icon">
-                        <div class="icon-big text-center icon-success bubble-shadow-small">
+                        <div class="icon-big text-center icon-black bubble-shadow-small">
                             <i class="fas fa-shopping-cart"></i>
                         </div>
                     </div>
@@ -118,7 +118,7 @@
             <div class="card-body ">
                 <div class="row align-items-center">
                     <div class="col-icon">
-                        <div class="icon-big text-center icon-secondary  bubble-shadow-small">
+                        <div class="icon-big text-center icon-black  bubble-shadow-small">
                             <i class="far fa-chart-bar"></i>
                         </div>
                     </div>
@@ -137,7 +137,7 @@
             <div class="card-body ">
                 <div class="row align-items-center">
                     <div class="col-icon">
-                        <div class="icon-big text-center icon-secondary  bubble-shadow-small">
+                        <div class="icon-big text-center icon-black  bubble-shadow-small">
                             <i class="far fa-chart-bar"></i>
                         </div>
                     </div>
@@ -157,7 +157,7 @@
             <div class="card-body ">
                 <div class="row align-items-center">
                     <div class="col-icon">
-                        <div class="icon-big text-center icon-secondary  bubble-shadow-small">
+                        <div class="icon-big text-center icon-black  bubble-shadow-small">
                             <i class="far fa-chart-bar"></i>
                         </div>
                     </div>
@@ -177,7 +177,7 @@
             <div class="card-body ">
                 <div class="row align-items-center">
                     <div class="col-icon">
-                        <div class="icon-big text-center icon-secondary  bubble-shadow-small">
+                        <div class="icon-big text-center icon-black  bubble-shadow-small">
                             <i class="far fa-chart-bar"></i>
                         </div>
                     </div>
@@ -197,7 +197,7 @@
             <div class="card-body ">
                 <div class="row align-items-center">
                     <div class="col-icon">
-                        <div class="icon-big text-center icon-danger  bubble-shadow-small">
+                        <div class="icon-big text-center icon-black  bubble-shadow-small">
                             <i class="fas fa-money-bill-wave"></i>
                         </div>
                     </div>
@@ -219,7 +219,7 @@
             <div class="card-body ">
                 <div class="row align-items-center">
                     <div class="col-icon">
-                        <div class="icon-big text-center icon-danger  bubble-shadow-small">
+                        <div class="icon-big text-center icon-black  bubble-shadow-small">
                             <i class="fas fa-money-bill-wave"></i>
                         </div>
                     </div>
@@ -239,7 +239,7 @@
             <div class="card-body ">
                 <div class="row align-items-center">
                     <div class="col-icon">
-                        <div class="icon-big text-center icon-danger  bubble-shadow-small">
+                        <div class="icon-big text-center icon-black  bubble-shadow-small">
                             <i class="fas fa-money-bill-wave"></i>
                         </div>
                     </div>
@@ -259,7 +259,7 @@
             <div class="card-body ">
                 <div class="row align-items-center">
                     <div class="col-icon">
-                        <div class="icon-big text-center icon-danger  bubble-shadow-small">
+                        <div class="icon-big text-center icon-black  bubble-shadow-small">
                             <i class="fas fa-money-bill-wave"></i>
                         </div>
                     </div>
@@ -282,7 +282,7 @@
                 <div class="card-body ">
                     <div class="row align-items-center">
                         <div class="col-icon">
-                            <div class="icon-big text-center icon-info bubble-shadow-small">
+                            <div class="icon-big text-center icon-black bubble-shadow-small">
                                 <i class="far fa-check-circle"></i>
                             </div>
                         </div>
@@ -302,7 +302,7 @@
             <div class="card-body ">
                 <div class="row align-items-center">
                     <div class="col-icon">
-                        <div class="icon-big text-center icon-info bubble-shadow-small">
+                        <div class="icon-big text-center icon-black bubble-shadow-small">
                             <i class="far fa-check-circle"></i>
                         </div>
                     </div>
@@ -324,7 +324,7 @@
             <div class="card-body ">
                 <div class="row align-items-center">
                     <div class="col-icon">
-                        <div class="icon-big text-center icon-info bubble-shadow-small">
+                        <div class="icon-big text-center icon-black bubble-shadow-small">
                             <i class="far fa-check-circle"></i>
                         </div>
                     </div>
@@ -344,7 +344,7 @@
             <div class="card-body ">
                 <div class="row align-items-center">
                     <div class="col-icon">
-                        <div class="icon-big text-center icon-info bubble-shadow-small">
+                        <div class="icon-big text-center icon-black bubble-shadow-small">
                             <i class="far fa-check-circle"></i>
                         </div>
                     </div>
@@ -364,7 +364,7 @@
             <div class="card-body ">
                 <div class="row align-items-center">
                     <div class="col-icon">
-                        <div class="icon-big text-center icon-info bubble-shadow-small">
+                        <div class="icon-big text-center icon-black bubble-shadow-small">
                             <i class="far fa-check-circle"></i>
                         </div>
                     </div>
@@ -384,7 +384,7 @@
             <div class="card-body ">
                 <div class="row align-items-center">
                     <div class="col-icon">
-                        <div class="icon-big text-center icon-info bubble-shadow-small">
+                        <div class="icon-big text-center icon-black bubble-shadow-small">
                             <i class="far fa-check-circle"></i>
                         </div>
                     </div>
@@ -405,7 +405,7 @@
             <div class="card-body ">
                 <div class="row align-items-center">
                     <div class="col-icon">
-                        <div class="icon-big text-center icon-info bubble-shadow-small">
+                        <div class="icon-big text-center icon-black bubble-shadow-small">
                             <i class="far fa-check-circle"></i>
                         </div>
                     </div>
@@ -427,7 +427,7 @@
             <div class="card-body ">
                 <div class="row align-items-center">
                     <div class="col-icon">
-                        <div class="icon-big text-center icon-info bubble-shadow-small">
+                        <div class="icon-big text-center icon-black bubble-shadow-small">
                             <i class="far fa-check-circle"></i>
                         </div>
                     </div>
@@ -447,7 +447,7 @@
             <div class="card-body ">
                 <div class="row align-items-center">
                     <div class="col-icon">
-                        <div class="icon-big text-center icon-info bubble-shadow-small">
+                        <div class="icon-big text-center icon-black bubble-shadow-small">
                             <i class="far fa-check-circle"></i>
                         </div>
                     </div>
@@ -468,7 +468,7 @@
             <div class="card-body ">
                 <div class="row align-items-center">
                     <div class="col-icon">
-                        <div class="icon-big text-center icon-info bubble-shadow-small">
+                        <div class="icon-big text-center icon-black bubble-shadow-small">
                             <i class="far fa-check-circle"></i>
                         </div>
                     </div>
@@ -488,7 +488,7 @@
             <div class="card-body ">
                 <div class="row align-items-center">
                     <div class="col-icon">
-                        <div class="icon-big text-center icon-info bubble-shadow-small">
+                        <div class="icon-big text-center icon-black bubble-shadow-small">
                             <i class="far fa-check-circle"></i>
                         </div>
                     </div>
@@ -507,7 +507,7 @@
             <div class="card-body ">
                 <div class="row align-items-center">
                     <div class="col-icon">
-                        <div class="icon-big text-center icon-info  bubble-shadow-small">
+                        <div class="icon-big text-center icon-black  bubble-shadow-small">
                             <i class="far fa-check-circle"></i>
                         </div>
                     </div>

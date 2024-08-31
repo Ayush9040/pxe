@@ -8,28 +8,28 @@
 @endsection
 @section('content')
     <!-- Page Title-->
-<div class="page-title">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <ul class="breadcrumbs">
-                    <li><a href="{{(route('front.index'))}}">{{__('Home')}}</a> </li>
-                    <li class="separator">&nbsp;</li>
-                    <li>{{__('Franchise Form')}}</li>
-                  </ul>
-            </div>
-        </div>
-    </div>
-  </div>
+<!--<div class="page-title">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-12">-->
+<!--                <ul class="breadcrumbs">-->
+<!--                    <li><a href="{{(route('front.index'))}}">{{__('Home')}}</a> </li>-->
+<!--                    <li class="separator">&nbsp;</li>-->
+<!--                    <li>{{__('Franchise Form')}}</li>-->
+<!--                  </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--  </div>-->
   <!-- Page Content-->
 
 
 
-<section class="form-section">
+<section class="form-section my-3">
 
     <div class="container">
       <div class="main-content">
-        <div class="form-para para pb-3 ">Are you ready to join the ranks of successful entrepreneurs and embark on a journey with a globally renowned brand? Look no further than xxx. Our franchise opportunities are your gateway to becoming a part of the xxx legacy.</div>
+        <div class="form-para para pb-3 uppercase">Are you ready to join the ranks of successful entrepreneurs and embark on a journey with a globally renowned brand? Look no further than xxx. Our franchise opportunities are your gateway to becoming a part of the xxx legacy.</div>
       </div>
     </div>
 </section>
@@ -56,18 +56,18 @@
             </div> -->
 
             <div class="form-outline">
-                <label class="form-label" for="form8Example4" style="padding-bottom: 3px;margin-bottom: 12px;"><b>Name</b><span class="form-required">*</span></label>
-                <input type="text" name="pr_info_name" placeholder="Name" id="form8Example4" class="form-control" style="height: 45px;border: solid lightgray 1px;" required />
+                <label class="form-label uppercase" for="form8Example4" style="padding-bottom: 3px;margin-bottom: 12px;"><b>Name</b><span class="form-required">*</span></label>
+                <input type="text" name="pr_info_name" placeholder="Name" id="form8Example4" class="form-control uppercase" style="height: 45px;border: solid lightgray 1px;" required />
               </div>
 
               <div class="form-outline">
-                <label class="form-label" for="form8Example4" style="padding-bottom: 3px;margin-bottom: 12px;"><b>Contact Number</b><span class="form-required">*</span></label>
-                <input type="tel" name="mobile_telephone" placeholder="Mobile Telephone" id="form8Example4" class="form-control" style="height: 45px;border: solid lightgray 1px;"required/>
+                <label class="form-label uppercase" for="form8Example4" style="padding-bottom: 3px;margin-bottom: 12px;"><b>Contact Number</b><span class="form-required">*</span></label>
+                <input type="tel" name="mobile_telephone" placeholder="Mobile Telephone" id="form8Example4 " class="form-control uppercase" style="height: 45px;border: solid lightgray 1px;"required/>
               </div>
 
               <div class="form-outline">
-                <label class="form-label" for="form8Example4" style="padding-bottom: 3px;margin-bottom: 12px;"><b>Mail Id</b><span class="form-required">*</span></label>
-                <input type="email" name="email" placeholder="Email" id="form8Example4" class="form-control" style="height: 50px;border: solid lightgray 1px;"required/>
+                <label class="form-label uppercase" for="form8Example4" style="padding-bottom: 3px;margin-bottom: 12px;"><b>Mail Id</b><span class="form-required">*</span></label>
+                <input type="email" name="email" placeholder="Email" id="form8Example4" class="form-control uppercase" style="height: 50px;border: solid lightgray 1px;"required/>
               </div>
 
 
@@ -91,51 +91,51 @@
                 "/>
               </div> -->
 
-              <div class="form-outline" style="padding-bottom: 7px;">
+              <div class="form-outline uppercase" style="padding-bottom: 7px;">
                 <label class="form-label" for="form8Example4" style="padding-bottom: 3px;margin-bottom: 12px;"><b>City</b><span class="form-required">*</span></label>
-                <input type="text" name="city" placeholder="City" id="form8Example4" class="form-control" style="height: 45px;border: solid lightgray 1px;"required/>
+                <input type="text" name="city" placeholder="City" id="form8Example4" class="form-control uppercase" style="height: 45px;border: solid lightgray 1px;"required/>
               </div>
 
-              <div class="form-outline">
-              <label class="form-label" for="form8Example4" style="padding-bottom: 3px;margin-bottom: 12px;"><b>Business/Work</b><span class="form-required">*</span></label>
-              <input name="business_describe" type="text" id="form8Example4" class="form-control" style="height: 45px;border: solid lightgray 1px;"required/>
+              <div class="form-outline uppercase">
+              <label class="form-label uppercase" for="form8Example4" style="padding-bottom: 3px;margin-bottom: 12px;"><b>Business/Work</b><span class="form-required">*</span></label>
+              <input name="business_describe" type="text" id="form8Example4" class="form-control uppercase" style="height: 45px;border: solid lightgray 1px;"required/>
             </div>
 
             <div class="form-outline">
-              <label class="form-label" for="form8Example4" style="padding-bottom: 3px;margin-bottom: 12px;"><b>Investment</b><span class="form-required">*</span></label>
+              <label class="form-label uppercase" for="form8Example4" style="padding-bottom: 3px;margin-bottom: 12px;"><b>Investment</b><span class="form-required">*</span></label>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="investment" id="exampleRadios1" value="40-50 lac" checked>
-                <label class="form-check-label text-white" for="investment">
+                <input class="form-check-input uppercase" type="radio" name="investment" id="exampleRadios1" value="40-50 lac" checked>
+                <label class="form-check-label text-white uppercase" for="investment">
                   40-50 lac
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="investment" id="exampleRadios2" value="50-60 lac">
-                <label class="form-check-label text-white" for="investment">
+                <input class="form-check-input uppercase" type="radio" name="investment" id="exampleRadios2" value="50-60 lac">
+                <label class="form-check-label text-white uppercase" for="investment">
                 50-60 lac
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="investment" id="exampleRadios3" value="60-70 lac">
-                <label class="form-check-label text-white" for="investment">
+                <input class="form-check-input uppercase" type="radio" name="investment" id="exampleRadios3" value="60-70 lac">
+                <label class="form-check-label text-white uppercase" for="investment">
                 60-70 lac
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="investment" id="exampleRadios2" value="70-80 lac">
-                <label class="form-check-label text-white" for="investment">
+                <input class="form-check-input uppercase" type="radio" name="investment" id="exampleRadios2" value="70-80 lac">
+                <label class="form-check-label text-white uppercase" for="investment">
                 70-80 lac
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="investment" id="exampleRadios2" value="80-90 lac">
-                <label class="form-check-label text-white" for="investment">
+                <input class="form-check-input uppercase" type="radio" name="investment" id="exampleRadios2" value="80-90 lac">
+                <label class="form-check-label text-white uppercase" for="investment">
                 80-90 lac
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="investment" id="exampleRadios2" value="1 cr above">
-                <label class="form-check-label text-white" for="investment">
+                <input class="form-check-input uppercase" type="radio" name="investment" id="exampleRadios2" value="1 cr above">
+                <label class="form-check-label text-white uppercase" for="investment">
                 1 cr above
                 </label>
               </div>
@@ -873,7 +873,7 @@
                     </div>
 
                     <div class="button-icon pb-4 mt-2">
-        <button class="btn btn-primary"type="submit" style="color:#000 !important">Submit</button>
+        <button class="btn btn-primary uppercase" type="submit" style="color:#000 !important">Submit</button>
       </div>
                 </div>
          

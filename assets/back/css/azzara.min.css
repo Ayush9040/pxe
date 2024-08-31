@@ -742,6 +742,7 @@ body {
     min-height: 100%;
     float: right;
     transition: all 0.3s;
+    background-color:#000;
   }
   .main-panel > .content {
     padding: 0 !important;
@@ -1766,6 +1767,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius:5px;
   }
   .card-stats .icon-big.icon-danger,
   .card-stats .icon-big.icon-default,
@@ -1805,6 +1807,10 @@ body {
   }
   .card-stats .icon-big.icon-danger {
     background: #f3545d;
+  }
+  .card-stats .icon-big.icon-black {
+    background: #000;
+    color:#fff;
   }
   .card-stats .icon-big.round {
     border-radius: 50% !important;

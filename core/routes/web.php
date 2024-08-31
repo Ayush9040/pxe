@@ -4,6 +4,7 @@
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+// use App\Http\Controllers\AboutUsController;
 
 Route::group(['middleware' => 'adminlocalize'], function () {
 
@@ -125,6 +126,11 @@ Route::group(['middleware' => 'adminlocalize'], function () {
             //------------ CHILD CATEGORY ------------
             Route::get('childcategory/status/{id}/{status}', 'Back\ChieldCategoryController@status')->name('back.childcategory.status');
             Route::resource('childcategory', 'Back\ChieldCategoryController', ['as' => 'back', 'except' => 'show']);
+
+             //------------ Premium CATEGORY ------------
+             Route::get('premiumcategory/status/{id}/{status}', 'Back\PremiumCategoryController@status')->name('back.premiumcategory.status');
+             Route::get('premiumcategory/feature/{id}/{status}', 'Back\PremiumCategoryController@feature')->name('back.premiumcategory.feature');
+             Route::resource('premiumcategory', 'Back\PremiumCategoryController', ['as' => 'back', 'except' => 'show']);
         });
 
 
@@ -132,6 +138,11 @@ Route::group(['middleware' => 'adminlocalize'], function () {
             //------------ USER ------------
             Route::resource('user', 'Back\UserController', ['as' => 'back', 'except' => ['create', 'store', 'edit']]);
         });
+        
+        Route::get('b2bcustomer', 'Back\UserController@b2bcustomer')->name('back.b2b.index');
+        Route::post('/b2bsubmit', 'Front\FrontendController@b2bsubmit')->name('front.b2b.submit');
+        Route::get('vaultcustomer', 'Back\UserController@vaultcustomer')->name('back.vault.index');
+      
 
         Route::group(['middleware' => 'permissions:Ecommerce'], function () {
             //------------ PROMO CODE ------------
@@ -182,7 +193,8 @@ Route::group(['middleware' => 'adminlocalize'], function () {
             Route::delete('post/delete/{key}/{id}', 'Back\PostController@delete')->name('back.post.photo.delete');
         // });
 
-
+        Route::get('post/show', 'Back\PostController@show')->name('back.post.show');
+       
         Route::group(['middleware' => 'permissions:Transactions'], function () {
             //------------ TRANSACTION ----------------//
             Route::get('/transactions', 'Back\TranactionController@index')->name('back.transaction.index');
@@ -234,8 +246,14 @@ Route::group(['middleware' => 'adminlocalize'], function () {
             Route::get('/announcement', 'Back\SettingController@announcement')->name('back.subscribers.announcement');
             Route::get('/cookie/alert', 'Back\SettingController@cookie')->name('back.cookie.alert');
             Route::get('/maintainance', 'Back\SettingController@maintainance')->name('back.setting.maintainance');
-
-            //   Home Page Customizations
+            
+            //Exclusive deals
+            Route::get('/exclusive', 'Back\HomePageController@exclusive')->name('back.exclusive.index');
+           Route::get('/exclusivecreate', 'Back\HomePageController@exclusivecreate')->name('back.exclusive.create');
+           Route::post('exclusivestore', 'Back\HomePageController@exclusivestore')->name('back.exclusive.store');
+           Route::get('exclusive/exclusivedestroy/{id}', 'Back\HomePageController@exclusivedestroy')->name('back.exclusive.destroy');
+          
+           //   Home Page Customizations
             Route::get('home-page', 'Back\HomePageController@index')->name('back.homePage');
             Route::post('home-page/hero/banner/update', 'Back\HomePageController@hero_banner_update')->name('back.hero.banner.update');
             Route::post('home-page/first/banner/update', 'Back\HomePageController@first_banner_update')->name('back.first.banner.update');
@@ -376,6 +394,22 @@ Route::group(['middleware' => 'maintainance'], function () {
         // ************************************ FRONTEND **********************************************
 
         //------------ FRONT ------------        
+
+
+        Route::get('/about', 'Front\FrontendController@about')->name('front.about');
+
+        Route::get('/bloog', 'Front\FrontendController@bloog')->name('front.bloog');
+
+        Route::get('/b2blogin', 'Front\FrontendController@b2blogin')->name('front.b2b_login');
+
+        Route::get('/bundle', 'Front\FrontendController@bundle')->name('front.bundle');
+      
+        Route::get('/vault', 'Front\FrontendController@vault')->name('front.vault');
+        Route::post('/vaultsubmit', 'Front\FrontendController@vaultsubmit')->name('front.vault.submit');
+        Route::get('/b2b', 'Front\FrontendController@b2b')->name('front.b2b');
+        Route::post('/b2bsubmit', 'Front\FrontendController@b2bsubmit')->name('front.b2b.submit');
+
+
         Route::get('/', 'Front\FrontendController@index')->name('front.index');
         Route::get('/extra-index', 'Front\FrontendController@extraIndex')->name('front.extraindex');
         Route::get('/product/{slug}', 'Front\FrontendController@product')->name('front.product');

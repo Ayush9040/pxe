@@ -9,7 +9,14 @@
     <td>
         {{ $data->phone }}
     </td>
+    
+        @if($data->activestatus==1)
+        <td> {{ __('Active') }} </td>
+        @else
+        <td> {{ __('InActive') }} </td>
+        @endif  
 
+    
     <td>
         <div class="action-list">
             <a class="btn btn-secondary btn-sm "

@@ -105,6 +105,7 @@
 							<th>{{ __('Image') }}</th>
                             <th width="30%">{{ __('Name') }}</th>
                             <th>{{ __('Price') }}</th>
+                            <th>{{ __('Stock') }}</th>
 							<th>{{ __('Status') }}</th>
 							<th>{{ __('Type') }}</th>
 							<th>{{ __('Item Type') }}</th>

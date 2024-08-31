@@ -10,28 +10,28 @@
 @endsection
 
 @section('content')
-<div class="page-title">
-    <div class="container">
-      <div class="row">
-          <div class="col-lg-12">
-            <ul class="breadcrumbs">
-                <li><a href="{{route('front.index')}}">{{__('Home')}}</a>
-                </li>
-                <li class="separator"></li>
-                <li><a href="{{route('front.catalog')}}">{{__('Shop')}}</a>
-                </li>
-                <li class="separator"></li>
-                <li>{{$item->name}}</li>
-              </ul>
-          </div>
-      </div>
-    </div>
-</div>
+<!--<div class="page-title">-->
+    <!--<div class="container">-->
+    <!--  <div class="row">-->
+    <!--      <div class="col-lg-12">-->
+    <!--        <ul class="breadcrumbs">-->
+    <!--            <li><a href="{{route('front.index')}}">{{__('Home')}}</a>-->
+    <!--            </li>-->
+    <!--            <li class="separator"></li>-->
+    <!--            <li><a href="{{route('front.catalog')}}">{{__('Shop')}}</a>-->
+    <!--            </li>-->
+    <!--            <li class="separator"></li>-->
+    <!--            <li>{{$item->name}}</li>-->
+    <!--          </ul>-->
+    <!--      </div>-->
+    <!--  </div>-->
+    <!--</div>-->
+<!--</div>-->
   <!-- Page Content-->
-<div class="container padding-bottom-1x mb-1">
-    <div class="row">
+<div class="padding-bottom-1x mb-1">
+    <div class="">
       <!-- Poduct Gallery-->
-      <div class="col-xxl-5 col-lg-6 col-md-6">
+      <div class="col-xxl-5">
         <div class="product-gallery">
             <!-- @if ($item->video)
             <div class="gallery-wrapper">
@@ -40,32 +40,69 @@
                 </div>
             </div>
           @endif -->
-          @if($item->is_stock())
-          <span class="product-badge
-          @if($item->is_type == 'feature')
-          bg-warning
-          @elseif($item->is_type == 'new')
-          bg-success
-          @elseif($item->is_type == 'top')
-          bg-info
-          @elseif($item->is_type == 'best')
-          bg-dark
-          @elseif($item->is_type == 'flash_deal')
-            bg-success
-          @endif
-          ">{{  $item->is_type != 'undefine' ?  ucfirst(str_replace('_',' ',$item->is_type)) : ''   }}</span>
+          <!--@if($item->is_stock())-->
+          <!--<span class="product-badge-->
+          <!--@if($item->is_type == 'feature')-->
+          <!--bg-warning-->
+          <!--@elseif($item->is_type == 'new')-->
+          <!--bg-success-->
+          <!--@elseif($item->is_type == 'top')-->
+          <!--bg-info-->
+          <!--@elseif($item->is_type == 'best')-->
+          <!--bg-dark-->
+          <!--@elseif($item->is_type == 'flash_deal')-->
+          <!--  bg-success-->
+          <!--@endif-->
+          <!--">{{  $item->is_type != 'undefine' ?  ucfirst(str_replace('_',' ',$item->is_type)) : ''   }}</span>-->
 
-          @else
-          <span class="product-badge bg-secondary border-default text-body
-          ">{{__('out of stock')}}</span>
-          @endif
+          <!--@else-->
+          <!--<span class="product-badge bg-secondary border-default text-body-->
+          <!--">{{__('out of stock')}}</span>-->
+          <!--@endif-->
 
-          @if($item->previous_price && $item->previous_price !=0)
-          <div class="product-badge bg-goldenrod  ppp-t"> -{{PriceHelper::DiscountPercentage($item)}}</div>
-          @endif
+          <!--@if($item->previous_price && $item->previous_price !=0)-->
+          <!--<div class="product-badge bg-goldenrod  ppp-t"> -{{PriceHelper::DiscountPercentage($item)}}</div>-->
+          <!--@endif-->
 
-          <div class="product-thumbnails insize">
+
+          <div class="product-thumbnails insize prod_page_gallery">
+
+
+
+            
+          <div class="top-attributes_new">
+              
+              <div class="mb-3 select-size">
+                                @foreach($attributes as $attribute)
+                            @if($attribute->options->count() != 0)
+                                <div class="col-sm-12">
+                                    <div class="">
+                                    <!-- <label for="{{ $attribute->name }}" class="color uppercase" style="font-size:25px">{{ $attribute->name }}</label> -->
+                                    <!-- <select class="form-control attribute_option color spe_edition size" id="{{ $attribute->name }}"  style="height:70px !important"> -->
+                                        @foreach($attribute->options->where('stock','!=','0') as $option)
+                                        <span class="uppercase" value="{{ $option->name }}" data-type="{{$attribute->id}}" data-href="{{$option->id}}" data-target="{{PriceHelper::setConvertPrice($option->price)}}" style="font-size:12px; background-color: #fff; border-radius: 100px; padding: 10px; margin: 5px; color: #000;">{{ $option->name }}</span>
+                                        @endforeach
+                                      <!-- </select> -->
+                                    </div>
+                                </div>
+                                @endif
+                            @endforeach
+    
+    
+          </div>
+    
+          <div class="p-action-button">
+                                
+        <button class="btn btn-primary m-0 a-t-c-mr spe_edition uppercase" id="add_to_cart"><i class="icon-bag"></i><span class="fs-lg">{{ __('Add to Bag') }}</span></button>
+    
+                                    
+    
+          </div>
+                </div>
+            
             <div class="product-details-slider owl-carousel" >
+
+            
             <div class="item"><img src="{{asset('assets/images/'.$item->photo)}}" alt="zoom"  /></div>
             @foreach ($galleries as $key => $gallery)
             <div class="item"><img src="{{asset('assets/images/'.$gallery->photo)}}" alt="zoom"  /></div>
@@ -95,44 +132,116 @@
         }
         @endphp
         <!-- Product Info-->
-        <div class="col-xxl-7 col-lg-6 col-md-6">
-            <div class="details-page-top-right-content d-flex align-items-center">
+        <div class="col-xxl-7">
+            <div class="details-page-top-right-content d-flex ">
                 <div class="div w-100">
                     <input type="hidden" id="item_id" value="{{$item->id}}">
                     <input type="hidden" id="demo_price" value="{{PriceHelper::setConvertPrice($item->discount_price)}}">
                     <input type="hidden" value="{{PriceHelper::setCurrencySign()}}" id="set_currency">
                     <input type="hidden" value="{{PriceHelper::setCurrencyValue()}}" id="set_currency_val">
                     <input type="hidden" value="{{$setting->currency_direction}}" id="currency_direction">
-                    <h4 class="mb-2 p-title-main">{{$item->name}}</h4>
-                    <div class="mb-3">
-                        <div class="rating-stars d-inline-block gmr-3">
-                        {!!renderStarRating($item->reviews->avg('rating'))!!}
-                        </div>
-                        @if ($item->is_stock())
-                            <span class="text-success  d-inline-block">{{__('In Stock')}}</span>
+                    <!-- <h4 class="mb-2 p-title-main uppercase">{{$item->name}}</h4> -->
+                    <div class="desc_product_pxe">
+                    <h4 class="mb-2 p-title-main uppercase prod_name_pxe">{{$item->name}}</h4>
+                        <!-- <div class="rating-stars d-inline-block gmr-3">-->
+                        <!--{!!renderStarRating($item->reviews->avg('rating'))!!}-->
+                        <!--</div> -->
+                        <!-- @if ($item->is_stock())
+                             <span class="text-success uppercase d-inline-block">{{__('In Stock')}}</span> 
                         @else
-                            <span class="text-danger  d-inline-block">{{__('Out of stock')}}</span>
-                        @endif
+                             <span class="text-danger uppercase d-inline-block">{{__('Out of stock')}}</span> 
+                        @endif -->
+
+                        <span class="h3 d-block price-area" style="margin-bottom:1rem">
+                    @if ($item->previous_price != 0)
+                        <small class="d-block uppercase"><span class="rp">REGULAR PRICE </span> <span class="number_rp">{{PriceHelper::setPreviousPrice($item->previous_price)}}</span></small>
+                    @endif
+                    <span id="main_price" class="main-price uppercase"><span class="rp">DISCOUNTED PRICE </span><span class="number_rp">{{PriceHelper::grandCurrencyPrice($item)}}</span>
+                    </span>
                     </div>
 
 
                     @if($item->is_type == 'flash_deal')
                     @if (date('d-m-y') != \Carbon\Carbon::parse($item->date)->format('d-m-y'))
-                    <div class="countdown countdown-alt mb-3" data-date-time="{{ $item->date }}">
-                    </div>
+                    <!-- <div class="countdown countdown-alt mb-3" data-date-time="{{ $item->date }}">
+                    </div> -->
                     @endif
                     @endif
 
-                    <span class="h3 d-block price-area">
+                    <!-- <span class="h3 d-block price-area" style="margin-bottom:1rem">
                     @if ($item->previous_price != 0)
-                        <small class="d-inline-block"><del>{{PriceHelper::setPreviousPrice($item->previous_price)}}</del></small>
+                        <small class="d-inline-block uppercase"><del>{{PriceHelper::setPreviousPrice($item->previous_price)}}</del></small>
                     @endif
-                    <span id="main_price" class="main-price">{{PriceHelper::grandCurrencyPrice($item)}}</span>
-                    </span>
+                    <span id="main_price" class="main-price uppercase">{{PriceHelper::grandCurrencyPrice($item)}}</span>
+                    </span> -->
 
-                    <p class="text-muted">{{$item->sort_details}} <a href="#details" class="scroll-to">{{__('Read more')}}</a></p>
+                    <p class="text-muted uppercase prod_details_pxe">{{$item->sort_details}} 
+                      <!-- <a href="#details" class="scroll-to">{{__('Read more')}}</a> -->
+                    </p>
 
-                    <div class="row margin-top-1x">
+
+                    <div class="spec_pxe">
+                    @if($sec_name)
+                     @foreach(array_combine($sec_name,$sec_details) as  $sname => $sdetail)
+        
+             <!-- <span>{{$sname}}</span> -->
+                          <span class="spec_button">{{$sdetail}}</span>
+                      </span>
+                      @endforeach
+                       @else
+                       <span class="text-center">
+                          <span colspan="2">{{__('No Specifications')}}</span>
+                           </span>
+                        @endif
+                    </div>
+
+                    <!-- <div class="prod-fix-text">
+                      <p class="prod-text uppercase">OUR COMMITMENT IS TO THE YOUTH, SO WE COMMIT TO PRODUCE AND DELIVER CONSISTENT INNOVATION THROUGH OUR CREATIVITY, INNOVATION AND WORKMANSHIP USING HIGH QUALITY PRODUCTS.</p>
+
+<p class="prod-text uppercase">HYPOYARN IS OUR PROUD PROPRIETARY INNOVATION MADE OUT OF 100% ETHCIALLY SOURCED HEAVY WEIGHT 24S COTTON CUT AND SEWED BY INDIAN WORKMANSHIP TO PROVIDE AN OVERSIZED FIT PROVIDING OVERALL BLOCK55 MERCHANDISE AN ELITE LOOK.</p>
+
+
+
+            @if($item->hypayarn==1)
+                      <div class="prod-img-container">
+                        <img src="{{ asset('assets/images/Hypoyann.png') }}" alt="">
+                        <img src="{{ asset('assets/images/ultimate print.png') }}" alt="">
+                        <img src="{{ asset('assets/images/Premium Fit.png') }}" alt="">
+                      
+                        <img src="{{ asset('assets/images/Oversized.png') }}" alt="">
+                      </div>
+
+                    
+             @endif
+</div> -->
+                    <!-- <div class="col-12 mb-3 select-size">
+                            @foreach($attributes as $attribute)
+                        @if($attribute->options->count() != 0)
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                <label for="{{ $attribute->name }}" class="color uppercase" style="font-size:25px">{{ $attribute->name }}</label>
+                                <select class="form-control attribute_option color spe_edition size" id="{{ $attribute->name }}"  style="height:70px !important">
+                                    @foreach($attribute->options->where('stock','!=','0') as $option)
+                                    <option class="uppercase" value="{{ $option->name }}" data-type="{{$attribute->id}}" data-href="{{$option->id}}" data-target="{{PriceHelper::setConvertPrice($option->price)}}" style="font-size:20px">{{ $option->name }}</option>
+                                    @endforeach
+                                  </select>
+                                </div>
+                            </div>
+                            @endif
+                        @endforeach
+
+
+      </div>
+
+      <div class="p-action-button col-12">
+                            
+    <button class="btn btn-primary m-0 a-t-c-mr spe_edition uppercase" id="add_to_cart"><i class="icon-bag"></i><span class="fs-lg">{{ __('Add to Cart') }}</span></button>
+
+                                
+
+      </div> -->
+
+                    <!-- <div class="row margin-top-1x">
                         @foreach($attributes as $attribute)
                         @if($attribute->options->count() != 0)
                             <div class="col-sm-6">
@@ -147,8 +256,8 @@
                             </div>
                             @endif
                         @endforeach
-                    </div>
-                    <div class="row align-items-end pb-4">
+                    </div> -->
+                    <!-- <div class="row align-items-end pb-4">
                         <div class="col-sm-12">
                             @if ($item->item_type == 'normal')
                             <div class="qtySelector product-quantity">
@@ -173,9 +282,9 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div class="div">
+                    <!-- <div class="div">
                         <div class="t-c-b-area">
                             @if ($item->brand_id)
                             <div class="pt-1 mb-1"><span class="text-medium">{{__('Brand')}}:</span>
@@ -243,59 +352,59 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
-        <div class=" padding-top-3x mb-3" id="details">
-            <div class="col-lg-12">
-            <ul class="nav nav-tabs" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">{{__('Descriptions')}}</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="specification-tab" data-bs-toggle="tab" data-bs-target="#specification" type="button" role="tab" aria-controls="specification" aria-selected="false">{{__('Specifications')}}</a>
-                </li>
-            </ul>
-            <div class="tab-content card">
-                <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab"">
-                {!! $item->details !!}
-                </div>
-                <div class="tab-pane fade show" id="specification" role="tabpanel" aria-labelledby="specification-tab">
-                <div class="comparison-table">
-                    <table class="table table-bordered">
-                        <thead class="bg-secondary">
-                        </thead>
-                        <tbody>
-                        <tr class="bg-secondary">
-                            <th class="text-uppercase">{{__('Specifications')}}</th>
-                            <td><span class="text-medium">{{__('Descriptions')}}</span></td>
-                        </tr>
-                        @if($sec_name)
-                        @foreach(array_combine($sec_name,$sec_details) as  $sname => $sdetail)
-                        <tr>
-                            <th>{{$sname}}</th>
-                            <td>{{$sdetail}}</td>
-                        </tr>
-                        @endforeach
-                        @else
-                        <tr class="text-center">
-                            <td colspan="2">{{__('No Specifications')}}</td>
-                            </tr>
-                        @endif
-                        </tbody>
-                    </table>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </div>
+         <!--<div class=" padding-top-3x mb-3" id="details">-->
+            <!--<div class="col-lg-12">-->
+            <!--<ul class="nav nav-tabs" role="tablist">-->
+                <!--<li class="nav-item" role="presentation">-->
+                    <!--<a class="nav-link active uppercase" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">{{__('Descriptions')}}</a>-->
+                <!--</li>-->
+                <!--<li class="nav-item" role="presentation">-->
+                <!--    <a class="nav-link" id="specification-tab" data-bs-toggle="tab" data-bs-target="#specification" type="button" role="tab" aria-controls="specification" aria-selected="false">{{__('Specifications')}}</a>-->
+                <!--</li>-->
+            <!--</ul>-->
+            <!--<div class="tab-content card">-->
+            <!--    <div class="tab-pane fade show active uppercase" id="description" role="tabpanel" aria-labelledby="description-tab" style="color:#aeaeae">-->
+            <!--    {!! $item->details !!}-->
+            <!--    </div>-->
+            <!--    <div class="tab-pane fade show" id="specification" role="tabpanel" aria-labelledby="specification-tab">-->
+            <!--    <div class="comparison-table">-->
+            <!--        <table class="table table-bordered">-->
+            <!--            <thead class="bg-secondary">-->
+            <!--            </thead>-->
+            <!--            <tbody>-->
+            <!--            <tr class="bg-secondary">-->
+            <!--                <th class="text-uppercase text-medium uppercase">{{__('Specifications')}}</th>-->
+            <!--                <td><span class="text-uppercase text-medium uppercase">{{__('Descriptions')}}</span></td>-->
+            <!--            </tr>-->
+            <!--            @if($sec_name)-->
+            <!--            @foreach(array_combine($sec_name,$sec_details) as  $sname => $sdetail)-->
+            <!--            <tr>-->
+            <!--                <th>{{$sname}}</th>-->
+            <!--                <td>{{$sdetail}}</td>-->
+            <!--            </tr>-->
+            <!--            @endforeach-->
+            <!--            @else-->
+            <!--            <tr class="text-center">-->
+            <!--                <td colspan="2">{{__('No Specifications')}}</td>-->
+            <!--                </tr>-->
+            <!--            @endif-->
+            <!--            </tbody>-->
+            <!--        </table>-->
+            <!--        </div>-->
+            <!--    </div>-->
+            <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
     </div>
 </div>
 
 
   <!-- Reviews-->
-  <div class="container  review-area">
+  <!-- <div class="container  review-area">
     <div class="row">
         <div class="col-lg-12">
             <div class="section-title">
@@ -385,7 +494,7 @@
 
 
     </div>
-  </div>
+  </div> -->
 
   @if(count($related_items)>0)
   <div class="relatedproduct-section container padding-bottom-3x mb-1 s-pt-30">
@@ -393,7 +502,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="section-title">
-                <h2 class="h3">{{ __('You May Also Like') }}</h2>
+                <h2 class="h3">{{ __('OTHER RECOMMENDED PRODUCTS') }}</h2>
             </div>
         </div>
     </div>
@@ -405,43 +514,42 @@
                     <div class="slider-item">
                         <div class="product-card">
 
-                            @if ($related->is_stock())
-                                @if($related->is_type == 'new')
-                                @else
-                                    <div class="product-badge
-                                    @if($related->is_type == 'feature')
-                                    bg-warning
+                            <!--@if ($related->is_stock())-->
+                            <!--    @if($related->is_type == 'new')-->
+                            <!--    @else-->
+                            <!--        <div class="product-badge-->
+                            <!--        @if($related->is_type == 'feature')-->
+                            <!--        bg-warning-->
 
-                                    @elseif($related->is_type == 'top')
-                                    bg-info
-                                    @elseif($related->is_type == 'best')
-                                    bg-dark
-                                    @elseif($related->is_type == 'flash_deal')
-                                    bg-success
-                                    @endif
-                                    ">{{  $related->is_type != 'undefine' ?  ucfirst(str_replace('_',' ',$related->is_type)) : ''   }}</div>
-                                    @endif
-                                    @else
-                                    <div class="product-badge bg-secondary border-default text-body
-                                    ">{{__('out of stock')}}</div>
-                            @endif
-                                    @if($related->previous_price && $related->previous_price !=0)
-                                    <div class="product-badge product-badge2 bg-info"> -{{PriceHelper::DiscountPercentage($related)}}</div>
-                            @endif
+                            <!--        @elseif($related->is_type == 'top')-->
+                            <!--        bg-info-->
+                            <!--        @elseif($related->is_type == 'best')-->
+                            <!--        bg-dark-->
+                            <!--        @elseif($related->is_type == 'flash_deal')-->
+                            <!--        bg-success-->
+                            <!--        @endif-->
+                            <!--        ">{{  $related->is_type != 'undefine' ?  ucfirst(str_replace('_',' ',$related->is_type)) : ''   }}</div>-->
+                            <!--        @endif-->
+                            <!--        @else-->
+                            <!--        <div class="product-badge bg-secondary border-default text-body ">{{__('out of stock')}}</div>-->
+                            <!--@endif-->
+                            <!--        @if($related->previous_price && $related->previous_price !=0)-->
+                            <!--        <div class="product-badge product-badge2 bg-info"> -{{PriceHelper::DiscountPercentage($related)}}</div>-->
+                            <!--@endif-->
 
-                            @if($related->previous_price && $related->previous_price !=0)
-                            <div class="product-badge product-badge2 bg-info"> -{{PriceHelper::DiscountPercentage($related)}}</div>
-                            @endif
-                            <div class="product-thumb">
+                            <!--@if($related->previous_price && $related->previous_price !=0)-->
+                            <!--<div class="product-badge product-badge2 bg-info"> -{{PriceHelper::DiscountPercentage($related)}}</div>-->
+                            <!--@endif-->
+                            <div class="product-thumb recommend">
                                 <img class="lazy" data-src="{{asset('assets/images/'.$related->thumbnail)}}" alt="Product">
                                 <div class="product-button-group">
                                     <a class="product-button wishlist_store" href="{{route('user.wishlist.store',$related->id)}}" title="{{__('Wishlist')}}"><i class="icon-heart"></i></a>
-                                    <a class="product-button product_compare" href="javascript:;" data-target="{{route('fornt.compare.product',$related->id)}}" title="{{__('Compare')}}"><i class="icon-repeat"></i></a>
+                                    <!--<a class="product-button product_compare" href="javascript:;" data-target="{{route('fornt.compare.product',$related->id)}}" title="{{__('Compare')}}"><i class="icon-repeat"></i></a>-->
                                     @include('includes.item_footer',['sitem' => $related])
                                     </div>
                                 </div>
                             <div class="product-card-body">
-                              <div class="product-category"><a href="{{route('front.catalog').'?category='.$related->category->slug}}">{{$related->category->name}}</a></div>
+                              <!--<div class="product-category"><a href="{{route('front.catalog').'?category='.$related->category->slug}}">{{$related->category->name}}</a></div>-->
                               <h3 class="product-title"><a href="{{route('front.product',$related->slug)}}">
                                 {{ strlen(strip_tags($related->name)) > 35 ? substr(strip_tags($related->name), 0, 35) : strip_tags($related->name) }}
                             </a></h3>
@@ -450,6 +558,9 @@
                                     <del>{{PriceHelper::setPreviousPrice($related->previous_price)}}</del>
                                 @endif
                                 {{PriceHelper::grandCurrencyPrice($related)}} </h4>
+                            <div style="justify-content:center;display:flex">
+                                <button type="button" class="quick_add_btn btn btn-primary add_to_single_cart" href="javascript:;"  data-target="{{$related->id}}" >QUICK ADD</button>
+                            </div>
                             </div>
 
                           </div>

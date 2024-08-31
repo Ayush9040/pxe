@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Eelon Tech</title>
+	<title>Block55</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-    <link rel="icon"  type="image/x-icon" href="{{ asset('assets/images/'.$setting->favicon) }}"/>
+    <link rel="icon"  type="image/x-icon" href="{{ asset('assets/images/logo.png') }}"/>
 
 	<!-- Fonts and icons -->
 	<script src="{{ asset('assets/back/js/plugin/webfont/webfont.min.js') }}"></script>
@@ -29,6 +29,14 @@
     @yield('styles')
 
 </head>
+<style>
+    .note-toolbar{
+    display:none;
+}
+.uppercase{
+    text-transform:uppercase;
+}
+</style>
 <body>
 	<div class="wrapper">
 		<div class="main-header " >
@@ -36,7 +44,8 @@
 			<div class="logo-header">
 
 				<a href="{{route('back.dashboard')}}" class="logo">
-				<img src="{{asset('assets/images/logo.png')}}" style="width: 70%;" alt="">
+				<img src="{{asset('assets/images/logofooter.png')}}" style="width: 70%;" alt="">
+				
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
@@ -57,7 +66,7 @@
 				<div class="container-fluid">
 					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
 						<li class="nav-item mr-4">
-							<a class="btn btn-sm btn-primary py-1 text-white" title="website" href="{{route('front.index')}}" target="_blank">
+							<a class="btn btn-sm btn-primary py-1 text-white uppercase" title="website" href="{{route('front.index')}}" target="_blank">
 							<b> {{ __('View Website') }}</b>
 							</a>
 						</li>
@@ -121,7 +130,7 @@
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 								<span>
 									{{ Auth::guard('admin')->user()->name }}
-									<span class="user-level">{{ __('Administrator') }}</span>
+									<span class="user-level uppercase">{{ __('Administrator') }}</span>
 								</span>
 							</a>
 						</div>

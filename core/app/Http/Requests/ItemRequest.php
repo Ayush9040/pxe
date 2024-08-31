@@ -54,7 +54,7 @@ class ItemRequest extends FormRequest
             'name'            => 'required|max:255',
             'slug'            => 'required','unique:items,slug' . $id, 'regex:/^[a-zA-Z0-9-]+$/',
             'category_id'     => 'required',
-            'details'         => 'required',
+           // 'details'         => 'required',
             'link'            => $check_link,
             'file'            => $check_file.'|file|mimes:zip',
             'sort_details'    => 'required',

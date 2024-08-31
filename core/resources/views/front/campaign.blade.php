@@ -51,7 +51,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h2 class="h3">{{ $setting->campaign_title }}</h2>
+                        <h2 class="h3 uppercase">{{ $setting->campaign_title }}</h2>
                         <div class="right-area">
                                 <div class="countdown countdown-alt" data-date-time="{{$setting->campaign_end_date}}"></div>
                         </div>
@@ -76,36 +76,37 @@
                             @elseif($compaign_item->item->is_type == 'flash_deal')
                             bg-success
                             @endif
+                            uppercase
                             ">
                             {{   ucfirst(str_replace('_',' ',$compaign_item->item->is_type))   }}
                             </div>
 
                             @else
-                            <div class="product-badge bg-secondary border-default text-body
+                            <div class="product-badge bg-secondary border-default text-body uppercase
                             ">{{__('out of stock')}}</div>
                             @endif
 
                             @if($compaign_item->previous_price && $compaign_item->previous_price !=0)
-                            <div class="product-badge product-badge2 bg-info"> -{{PriceHelper::DiscountPercentage($compaign_item->item)}}</div>
+                            <div class="product-badge product-badge2 bg-info uppercase"> -{{PriceHelper::DiscountPercentage($compaign_item->item)}}</div>
                             @endif
 
                         <img src="{{asset('assets/images/'.$compaign_item->item->thumbnail)}}" alt="Product">
                         <div class="product-button-group">
-                            <a class="product-button wishlist_store" href="{{route('user.wishlist.store',$compaign_item->item->id)}}" title="{{__('Wishlist')}}"><i class="icon-heart"></i></a>
-                            <a data-target="{{route('fornt.compare.product',$compaign_item->item->id)}}" class="product-button product_compare" href="javascript:;" title="{{__('Compare')}}"><i class="icon-repeat"></i></a>
+                            <a class="product-button wishlist_store uppercase" href="{{route('user.wishlist.store',$compaign_item->item->id)}}" title="{{__('Wishlist')}}"><i class="icon-heart"></i></a>
+                            <a data-target="{{route('fornt.compare.product',$compaign_item->item->id)}}" class=" uppercase product-button product_compare" href="javascript:;" title="{{__('Compare')}}"><i class="icon-repeat"></i></a>
                             @include('includes.item_footer',['sitem' => $compaign_item->item])
                         </div>
                     </div>
                     <div class="product-card-body">
 
-                        <div class="product-category"><a href="{{route('front.catalog').'?category='.$compaign_item->item->category->slug}}">{{$compaign_item->item->category->name}}</a></div>
-                        <h3 class="product-title"><a href="{{route('front.product',$compaign_item->item->slug)}}">
+                        <div class="product-category uppercase"><a href="{{route('front.catalog').'?category='.$compaign_item->item->category->slug}}">{{$compaign_item->item->category->name}}</a></div>
+                        <h3 class="product-title uppercase"><a href="{{route('front.product',$compaign_item->item->slug)}}">
                             {{ strlen(strip_tags($compaign_item->item->name)) > 35 ? substr(strip_tags($compaign_item->item->name), 0, 35) : strip_tags($compaign_item->item->name) }}
                         </a></h3>
-                        <div class="rating-stars">
+                        <div class="rating-stars uppercase">
                             {!! renderStarRating($compaign_item->item->reviews->avg('rating')) !!}
                         </div>
-                        <h4 class="product-price">
+                        <h4 class="product-price uppercase">
                         @if ($compaign_item->item->previous_price != 0)
                         <del>{{PriceHelper::setPreviousPrice($compaign_item->item->previous_price)}}</del>
                         @endif

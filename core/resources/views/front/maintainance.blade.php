@@ -18,6 +18,7 @@
 				font-weight: 400;
 				font-family: 'Lato';
 				overflow: hidden;
+				/* background-image: url("assets/images/'.$setting->maintainance_image"); */
 			}
 
 			.container {
@@ -51,7 +52,7 @@
 
 .container .btn {
   position: absolute;
-  top: 50%;
+  bottom: 11%;
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
@@ -64,16 +65,33 @@
   text-align: center;
 }
 
-.btn{
-	margin-top: 14rem;
+.register_fixed{
+	/* margin-top: 14rem; */
 	padding: 6px 4rem 8px 4rem;
 	background: #ff0000 !important;
 	color: #000 !important;
 	font-weight: 600;
 }
+
+
 button:hover{
 	background-color: #d10505 !important;
 }
+
+@media (max-width:600px){
+	
+.register_fixed{
+	/* margin-top: 14rem; */
+	/* padding: 6px 4rem 8px 4rem;
+	background: #ff0000 !important;
+	color: #000 !important;
+	font-weight: 600; */
+	background-color: yellow;
+}
+	
+}
+
+
 </style>
 	</head>
 	<body>
@@ -83,7 +101,7 @@ button:hover{
 					<div class="col-lg-12">
 						<div class="maintain-img-wrapper">
 							 <img src="{{asset('assets/images/'.$setting->maintainance_image)}}" alt="">
-							 <a href="{{route('user.login')}}"> <button class="btn">REGISTER</button></a>
+							 <a href="{{route('user.login')}}"> <button class= "btn register_fixed">REGISTER</button></a>
 						</div>
 					</div>
 				</div>

@@ -11,6 +11,9 @@
         {{ PriceHelper::adminCurrencyPrice($data->discount_price) }}
     </td>
     <td>
+        {{  $data->stock }}
+    </td>
+    <td>
         <div class="dropdown">
             <button class="btn btn-{{  $data->status == 1 ? 'success' : 'danger'  }} btn-sm  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               {{  $data->status == 1 ? __('Publish') : __('Unpublish')  }}
